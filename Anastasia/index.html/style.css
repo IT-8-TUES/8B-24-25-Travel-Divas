@@ -1,0 +1,224 @@
+:root {
+  --summer-leaves: #739E7E;
+  --ocean: #507772;
+  --deep-water: #233840;
+  --olive: #BAC43B;
+  --deep-sand: #95845C;
+}
+
+body {
+  background: linear-gradient(135deg, #233840, #507772);
+  color: #f6f6e7;
+  font-family: 'Montserrat', Arial, sans-serif;
+  letter-spacing: 0.02em;
+  margin: 0;
+  min-height: 100vh;
+  
+}
+
+header {
+  background: #3a5757;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+}
+
+.main-nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 32px;
+  height: 60px;
+  background: #739E7E;
+}
+
+.nav-left {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+}
+
+.nav-links {
+  display: flex;
+  gap: 18px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-links li a {
+  color: #e6f16a;
+  background: transparent;
+  text-decoration: none;
+  font-weight: bold;
+  padding: 8px 18px;
+  border-radius: 6px;
+  transition: background 0.2s, color 0.2s;
+}
+
+.nav-links li a:hover,
+.nav-links li a.active {
+  background: #e6f16a;
+  color: #3a5757;
+}
+
+.nav-right {
+  display: flex;
+  gap: 12px;
+}
+
+.nav-btn {
+  background: #e6f16a;
+  color: #3a5757;
+  padding: 8px 18px;
+  border-radius: 6px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: background 0.2s, color 0.2s;
+}
+
+.nav-btn:hover {
+  background: #c8d94a;
+  color: #233840;
+}
+
+@media (max-width: 800px) {
+  .main-nav {
+    flex-direction: column;
+    align-items: flex-start;
+    height: auto;
+    padding: 16px;
+  }
+  .nav-left {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+  .nav-links {
+    flex-direction: column;
+    gap: 8px;
+  }
+  .nav-right {
+    margin-top: 10px;
+  }
+}
+
+main.hero {
+  max-width: 600px;
+  margin: 50px auto 0 auto;
+  background: #739E7E; /* фонът на малката кутийка */
+  border-radius: 14px;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.10);
+  padding: 36px 32px 28px 32px;
+  transition: transform 0.3s ease; /* плавен zoom ефект */
+}
+
+main.hero:hover {
+  transform: scale(1.03); /* леко уголемяване при hover */
+}
+
+main.hero .intro,
+main.hero .next-trip {
+  background: #507772; /* фон зад текста вътре в кутийката */
+  border-radius: 10px;
+  padding: 22px 18px;
+  margin-bottom: 18px;
+}
+
+main.hero .intro h2,
+main.hero .intro p,
+main.hero .next-trip,
+main.hero .next-trip h3 {
+  color: #f6f6e7;
+}
+
+.intro h2 {
+  color: #e6f16a;
+  margin-top: 0;
+  margin-bottom: 10px;
+  font-size: 1.5em;
+}
+
+.intro p {
+  color: #f6f6e7;
+  margin-bottom: 24px;
+}
+
+.buttons {
+  margin-bottom: 28px;
+}
+
+.btn, .btn.secondary, .btn.gallery {
+  display: inline-block;
+  padding: 10px 22px;
+  margin-right: 10px;
+  border-radius: 6px;
+  border: 1px solid #e6f16a;
+  font-size: 1em;
+  font-weight: bold;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+  background: #507772;
+  color: #f6f6e7;
+}
+
+.btn:hover, .btn.secondary:hover, .btn.gallery:hover {
+  background: #e6f16a;
+  color: #3a5757;
+  border: 1px solid #507772;
+}
+
+.next-trip {
+  background: #46686b;
+  border-radius: 10px;
+  padding: 18px 20px;
+  margin-top: 18px;
+  color: #e6f6e7;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+}
+
+.next-trip h3 {
+  color: #e6f16a;
+  margin-top: 0;
+}
+
+footer {
+  text-align: center;
+  color: #e6f16a;
+  background: #3a5757;
+  padding: 18px 0 10px 0;
+  margin-top: 40px;
+  border-radius: 0 0 10px 10px;
+  font-size: 1em;
+}
+
+.logo-pacifico {
+  font-family: 'Pacifico', cursive;
+  font-size: 2.2em;
+  color: #f6f6e7;
+  margin: 0;
+}
+
+.presentation h2 {
+  font-family: 'Pacifico', cursive;
+  font-size: 2.5em;
+  color: #e6f16a;
+  text-shadow: 1px 2px 8px #23384055;
+  margin-bottom: 18px;
+}
+
+.presentation p, .presentation-list {
+  font-size: 1.22em;
+  line-height: 1.7;
+  color: #f6f6e7;
+  text-shadow: 0 1px 4px #23384033;
+}
+
+.presentation-list li {
+  margin-bottom: 10px;
+  padding-left: 4px;
+}
+
+.presentation b, .presentation strong {
+  color: #e6f16a;
+  font-weight: 700;
+}

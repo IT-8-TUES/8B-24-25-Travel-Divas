@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="bg">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Travel Divas</title>
+  <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header>
+    <nav class="main-nav">
+      <div class="nav-left">
+        <h1 class="logo-pacifico">Travel Divas</h1>
+        <ul class="nav-links">
+          <li><a href="index.html" class="active">Начало</a></li>
+          <li><a href="plan-trip.html">Планирай пътуване</a></li>
+          <li><a href="planned.html">Планирани</a></li>
+          <li><a href="past-trips.html">Дневник</a></li>
+          <li><a href="gallery.html">Галерия</a></li>
+          <li><a href="checklist.html">Чеклист</a></li>
+          <li><a href="stats.html">Статистика</a></li>
+        </ul>
+      </div>
+    </nav>
+  </header>
+
+  <section class="presentation">
+    <h2>Добре дошъл в света на твоите пътешествия!</h2>
+    <p>
+      <strong>Travel Divas</strong> е твоето лично пространство за организиране и съхраняване на всички твои пътешествия. Тук можеш да планираш бъдещи приключения, да записваш спомени от минали пътувания, да добавяш снимки и да следиш статистиката на своите маршрути. Всичко се съхранява само на твоя компютър и е достъпно само за теб!
+    </p>
+    <p>
+      <b>Какво можеш да правиш в Travel Divas?</b>
+    </p>
+    <ul class="presentation-list">
+      <li><b>Планирай пътуване:</b> Избери дестинация, добави дати, бюджет и дейности, за да организираш следващото си приключение.</li>
+      <li><b>Планирани:</b> Виж всички бъдещи пътувания, които си добавил, и следи колко дни остават до тях.</li>
+      <li><b>Дневник:</b> Записвай преживяванията си от минали пътувания, добавяй оценки и коментари за всяка дестинация.</li>
+      <li><b>Галерия:</b> Качи и разглеждай снимки от своите пътешествия, за да запазиш най-хубавите си спомени.</li>
+      <li><b>Чеклист:</b> Създай списък с неща за опаковане и задачи преди тръгване, за да не забравиш нищо важно.</li>
+      <li><b>Статистика:</b> Виж колко държави и градове си посетил, колко дни си пътувал и други интересни факти за твоите приключения.</li>
+    </ul>
+    <p>
+      Travel Divas е напълно <b>личен и сигурен</b> – всички данни се пазят само на твоя компютър чрез localStorage и не се изпращат никъде другаде.
+      <br>Започни да планираш и записваш своите пътувания още сега!
+    </p>
+    <div class="buttons">
+      <a href="plan-trip.html" class="btn">Планирай пътуване</a>
+      <a href="past-trips.html" class="btn secondary">Виж дневника</a>
+      <a href="gallery.html" class="btn secondary">Галерия</a>
+    </div>
+  </section>
+
+  <main class="hero">
+    <section class="next-trip">
+      <h3>Следващо пътуване:</h3>
+      <p>Оставащи дни: <span id="countdown">12</span></p>
+      <p>Дестинация: <strong>Барселона, Испания</strong></p>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 Travel Divas </p>
+  </footer>
+
+  <script src="menu.js"></script>
+</body>
+</html>
