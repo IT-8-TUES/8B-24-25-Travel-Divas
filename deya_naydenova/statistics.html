@@ -1,194 +1,217 @@
 <!DOCTYPE html>
 <html lang="bg">
 <head>
-  <meta charset="UTF-8">
-  <title>Планирани пътувания | TripTide</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Планирани пътувания – My Travel World</title>
   <style>
-    :root {
-      --ivory: #F9F6EF;
-      --turquoise: #1CA9A3;
-      --accent: #D4E157;
-      --dark: #212121;
-    }
-
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
     body {
+      margin: 0;
       font-family: 'Segoe UI', sans-serif;
-      background-color: var(--ivory);
-      color: var(--dark);
+      background: linear-gradient(135deg, #e0f7fa, #e8f5e9);
+      color: #1b5e20;
     }
 
-    .navbar {
+    /* Навигация с лого */
+    nav {
+      background: linear-gradient(to right, #2196f3, #43a047);
+      padding: 0.8rem 2rem;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      background: white;
-      padding: 1rem 2rem;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-      position: sticky;
-      top: 0;
-      z-index: 1000;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      flex-wrap: wrap;
     }
 
-    .navbar .brand {
-      font-size: 1.6rem;
-      font-weight: bold;
-      color: var(--turquoise);
+    .logo {
       display: flex;
       align-items: center;
       gap: 0.5rem;
     }
 
+    .logo img {
+      height: 40px;
+      width: auto;
+      border-radius: 6px;
+    }
+
+    .logo span {
+      color: white;
+      font-weight: bold;
+      font-size: 1.2rem;
+    }
+
     .nav-links {
       display: flex;
-      gap: 1.5rem;
-      list-style: none;
+      gap: 1rem;
+      flex-wrap: wrap;
+      justify-content: center;
     }
 
     .nav-links a {
-      text-decoration: none;
-      color: var(--dark);
-      font-weight: 500;
-      padding: 0.4rem 0.6rem;
-      border-radius: 6px;
-      transition: 0.2s ease;
-    }
-
-    .nav-links a:hover,
-    .nav-links .active {
-      background: var(--turquoise);
       color: white;
+      text-decoration: none;
+      font-weight: 500;
+      transition: opacity 0.3s;
     }
 
-    .header-title {
-      font-size: 2.4rem;
-      font-weight: 700;
-      padding: 3rem 2rem 1rem 2rem;
-      color: var(--dark);
+    .nav-links a:hover {
+      opacity: 0.8;
     }
 
-    .subtext {
-      font-size: 1.1rem;
-      padding: 0 2rem 2rem;
-      color: #555;
-    }
-
-    .trips-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 1.5rem;
-      padding: 1rem 2rem 3rem;
-    }
-
-    .trip-card {
+    /* Основен контейнер */
+    .container {
+      max-width: 1000px;
+      margin: 3rem auto;
+      padding: 2rem;
       background: white;
-      padding: 1.4rem 1.6rem;
+      border-radius: 20px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    }
+
+    h1 {
+      text-align: center;
+      font-size: 2.2rem;
+      color: #0d47a1;
+      margin-bottom: 2rem;
+    }
+
+    /* Карта на пътуване */
+    .trip-card {
+      background: linear-gradient(135deg, #bbdefb, #c8e6c9);
+      border-left: 6px solid #64b5f6;
+      margin-bottom: 1.5rem;
+      padding: 1.2rem;
       border-radius: 16px;
-      box-shadow: 0 4px 14px rgba(0,0,0,0.08);
-      transition: all 0.3s ease;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.07);
+      transition: transform 0.2s;
     }
 
     .trip-card:hover {
-      transform: translateY(-6px);
+      transform: scale(1.01);
     }
 
-    .trip-card h3 {
-      font-size: 1.3rem;
-      color: var(--turquoise);
-      margin-bottom: 0.5rem;
+    .trip-card.expired {
+      border-left-color: #ef5350;
+      background: linear-gradient(135deg, #ffcdd2, #f8bbd0);
     }
 
-    .trip-card p {
-      margin: 0.3rem 0;
-      color: #444;
-      font-size: 0.95rem;
+    .trip-header {
       display: flex;
+      justify-content: space-between;
       align-items: center;
-      gap: 0.4rem;
     }
 
-    .countdown, .trip-status {
-      font-weight: 600;
-      margin-top: 0.5rem;
-      color: var(--accent);
+    .trip-header h2 {
+      margin: 0;
+      color: #1a237e;
     }
 
-    .archive-btn {
+    .trip-header strong {
+      background: #ffffff33;
+      padding: 0.3rem 0.8rem;
+      border-radius: 8px;
+      font-size: 0.9rem;
+    }
+
+    .trip-info p {
+      margin: 0.3rem 0;
+      color: #2e7d32;
+    }
+
+    .btn-archive {
       margin-top: 1rem;
-      background: var(--turquoise);
+      padding: 0.6rem 1.4rem;
+      background: linear-gradient(to right, #2196f3, #4caf50);
       color: white;
       border: none;
-      padding: 0.6rem 1rem;
-      font-weight: 600;
-      border-radius: 8px;
+      border-radius: 10px;
       cursor: pointer;
-      transition: background 0.2s;
+      font-weight: bold;
+      transition: background 0.3s;
     }
 
-    .archive-btn:hover {
-      background: #178d88;
-    }
-
-    @media (max-width: 600px) {
-      .header-title {
-        font-size: 1.8rem;
-      }
+    .btn-archive:hover {
+      background: linear-gradient(to right, #1976d2, #388e3c);
     }
   </style>
 </head>
 <body>
 
-  <nav class="navbar">
-    <div class="brand"><i class="fas fa-globe"></i> TripTide</div>
-    <ul class="nav-links">
-      <li><a href="index.html">Начало</a></li>
-      <li><a href="plan-trip.html">Планирай</a></li>
-      <li><a href="planned-trips.html" class="active">Планирани</a></li>
-      <li><a href="past-trips.html">Дневник</a></li>
-      <li><a href="gallery.html">Галерия</a></li>
-    </ul>
+  <nav>
+    <div class="logo">
+      <img src="logo.png">
+      <span>My Travel World</span>
+    </div>
+    <div class="nav-links">
+      <a href="index.html">Начало</a>
+      <a href="plan-trip.html">Планирай</a>
+      <a href="planned-trips.html">Планирани</a>
+      <a href="past-trips.html">Дневник</a>
+      <a href="gallery.html">Галерия</a>
+      <a href="packing-list.html">Багаж</a>
+      <a href="statistics.html">Статистика</a>
+    </div>
   </nav>
 
-  <div class="header-title">Планирани пътувания</div>
-  <div class="subtext">Твоите предстоящи приключения на едно място.</div>
-
-  <main class="trips-grid">
-    <div class="trip-card" data-start="2025-07-20" data-end="2025-07-30">
-      <h3><i class="fas fa-location-dot"></i> Мавриций</h3>
-      <p><i class="fas fa-calendar-day"></i> 20 юли – 30 юли 2025</p>
-      <p><i class="fas fa-person-swimming"></i> Плаж, гмуркане, релакс</p>
-      <p><i class="fas fa-wallet"></i> 3500 лв</p>
-      <p class="countdown"><i class="fas fa-clock"></i> Остават <span class="days-left">...</span> дни</p>
-      <p class="trip-status"><i class="fas fa-info-circle"></i> <span class="trip-status-text">...</span></p>
-      <button class="archive-btn"><i class="fas fa-box-archive"></i> Архивирай</button>
-    </div>
-  </main>
+  <div class="container">
+    <h1>Планирани пътувания</h1>
+    <div id="tripsList"></div>
+  </div>
 
   <script>
-    document.addEventListener("DOMContentLoaded", () => {
-      document.querySelectorAll(".trip-card").forEach(card => {
-        const startDate = new Date(card.dataset.start);
-        const today = new Date();
-        const diffTime = startDate - today;
-        const daysLeft = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+    const tripsList = document.getElementById('tripsList');
 
-        card.querySelector(".days-left").textContent = daysLeft >= 0 ? daysLeft : 0;
-        card.querySelector(".trip-status-text").textContent = daysLeft >= 0 ? "Предстоящо" : "Минало";
+    function loadTrips() {
+      const trips = JSON.parse(localStorage.getItem('plannedTrips')) || [];
+      tripsList.innerHTML = '';
 
-        card.querySelector(".archive-btn").addEventListener("click", () => {
-          alert("Пътуването е архивирано.");
-          card.remove();
-        });
+      if (trips.length === 0) {
+        tripsList.innerHTML = '<p>Няма планирани пътувания.</p>';
+        return;
+      }
+
+      trips.forEach((trip, index) => {
+        const now = new Date();
+        const dateTo = new Date(trip.dateTo);
+        const diffTime = dateTo - now;
+        const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+        const expired = diffDays < 0;
+
+        const card = document.createElement('div');
+        card.className = 'trip-card' + (expired ? ' expired' : '');
+
+        card.innerHTML = `
+          <div class="trip-header">
+            <h2>${trip.destination}</h2>
+            <strong>${expired ? 'Изтекло' : 'Предстоящо'}</strong>
+          </div>
+          <div class="trip-info">
+            <p>От: ${trip.dateFrom} до ${trip.dateTo}</p>
+            <p>Бюджет: ${trip.budget} лв.</p>
+            <p>Остават: ${expired ? '0' : diffDays} дни</p>
+          </div>
+          <button class="btn-archive" onclick="archiveTrip(${index})">Архивирай</button>
+        `;
+
+        tripsList.appendChild(card);
       });
-    });
-  </script>
+    }
 
+    function archiveTrip(index) {
+      const trips = JSON.parse(localStorage.getItem('plannedTrips')) || [];
+      const archived = JSON.parse(localStorage.getItem('pastTrips')) || [];
+
+      archived.push(trips[index]);
+      trips.splice(index, 1);
+
+      localStorage.setItem('plannedTrips', JSON.stringify(trips));
+      localStorage.setItem('pastTrips', JSON.stringify(archived));
+
+      loadTrips();
+    }
+
+    loadTrips();
+  </script>
 </body>
 </html>
