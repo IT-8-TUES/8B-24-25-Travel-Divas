@@ -4,15 +4,15 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>My Travel World</title>
-  <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;400&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
   <header>
     <nav class="main-nav">
       <div class="nav-left">
-        <img src="logo.png" alt="My Travel World Logo" style="height:40px; margin-right:12px;">
-        <h1 class="logo-pacifico">My Travel World</h1>
+        <img src="logo.png" alt="My Travel World Logo" class="nav-logo">
+        <span class="nav-title">My Travel World</span>
       </div>
       <ul class="nav-links">
         <li><a href="index.html" class="active">Начало</a></li>
@@ -53,13 +53,32 @@
     </div>
   </section>
 
-  <main class="hero">
-    <section class="next-trip">
-      <h3>Следващо пътуване:</h3>
-      <p>Оставащи дни: <span id="countdown">12</span></p>
-      <p>Дестинация: <strong>Барселона, Испания</strong></p>
-    </section>
-  </main>
+  <div class="trips-container">
+    <div class="trip-card">
+      <div class="trip-header">
+        <h2>Париж, Франция</h2>
+        <span class="trip-status">Предстоящо</span>
+      </div>
+      <div class="trip-info">
+        <p>От: 2025-10-04 до 2025-10-14</p>
+        <p>Бюджет: 1200 лв.</p>
+        <p>Остават: 2 месеца</p>
+      </div>
+      <button class="btn">Архивирай</button>
+    </div>
+    <div class="trip-card">
+      <div class="trip-header">
+        <h2>Лисабон, Португалия</h2>
+        <span class="trip-status">Предстоящо</span>
+      </div>
+      <div class="trip-info">
+        <p>От: 2025-06-01 до 2025-06-07</p>
+        <p>Бюджет: 950 лв.</p>
+        <p>Остават: 10 дни</p>
+      </div>
+      <button class="btn">Архивирай</button>
+    </div>
+  </div>
 
   <footer>
     <p>&copy; 2025 My Travel World </p>

@@ -1,11 +1,3 @@
-:root {
-  --summer-leaves: #739E7E;
-  --ocean: #507772;
-  --deep-water: #233840;
-  --olive: #BAC43B;
-  --deep-sand: #95845C;
-}
-
 body {
   background: linear-gradient(135deg, #e0f7fa, #e8f5e9);
   color: #f6f6e7;
@@ -19,58 +11,77 @@ header {
   box-shadow: 0 2px 8px rgba(0,0,0,0.08);
 }
 
-/* NAVIGATION BAR */
 .main-nav {
+  background: linear-gradient(to right, #21a7df, #43b47e);
+  padding: 0.5rem 1.2rem 0.5rem 1.2rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0.8rem 2rem;
-  height: 64px;
-  background: linear-gradient(to right, #2196f3, #43a047);
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
   flex-wrap: wrap;
+  min-height: 60px;
+  border-radius: 0; 
 }
 
 .nav-left {
   display: flex;
   align-items: center;
-  gap: 16px;
+  gap: 12px;
 }
 
-.logo-pacifico {
-  font-family: 'Pacifico', cursive;
-  font-size: 2.2em;
-  color: #f6f6e7;
+.nav-logo {
+  height: 38px;      
+  margin-right: 10px;
+}
+
+.nav-title {
+  font-family: 'Montserrat', Arial, sans-serif;
+  font-size: 1.25em; 
+  font-weight: 700;
+  color: #fff;
   margin: 0;
-  letter-spacing: 1px;
+  letter-spacing: 0.5px;
+  line-height: 1;
 }
 
 .nav-links {
   display: flex;
-  gap: 22px;
+  gap: 1.1rem; 
+  flex-wrap: wrap;
+  justify-content: center;
   list-style: none;
   margin: 0;
   padding: 0;
 }
 
+.nav-links li {
+  display: inline;
+}
+
 .nav-links li a {
   color: #fff;
-  background: transparent;
   text-decoration: none;
-  font-weight: bold;
-  padding: 8px 18px;
+  font-weight: 700;
+  font-size: 1em; 
+  transition: color 0.2s;
+  background: transparent;
   border-radius: 6px;
-  transition: background 0.2s, color 0.2s;
-  font-size: 1.1em;
+  padding: 6px 10px; 
+  position: relative;
+}
+
+.nav-links li a.active::after {
+  display: none;
 }
 
 .nav-links li a:hover,
 .nav-links li a.active {
-  background: #e6f16a;
-  color: #f4f6f6;
+  color: #e0e0e0;
+  background: transparent;
+  font-weight: 700;
+  text-shadow: none;
 }
 
-/* Responsive */
 @media (max-width: 900px) {
   .main-nav {
     flex-direction: column;
@@ -88,7 +99,6 @@ header {
   }
 }
 
-/* ...Останалата част от твоя CSS (presentation, hero, бутони и т.н.)... */
 .presentation h2 {
   font-family: 'Pacifico', cursive;
   font-size: 2.5em;
@@ -170,7 +180,7 @@ main.hero .next-trip h3 {
   text-decoration: none;
   cursor: pointer;
   transition: background 0.2s, color 0.2s;
-   background: linear-gradient(to right, #2196f3, #43a047);
+  background: linear-gradient(to right, #2196f3, #43a047);
   color: #f6f6e7;
 }
 
@@ -194,7 +204,6 @@ main.hero .next-trip h3 {
   margin-top: 0;
 }
 
-/* Контейнер за кутийките */
 .trips-container {
   display: flex;
   justify-content: flex-start;
@@ -202,25 +211,26 @@ main.hero .next-trip h3 {
   margin: 40px 0 0 0;
 }
 
-/* Кутийка за пътуване */
 .trip-card {
   position: relative;
-  background: linear-gradient(120deg, #b3e5fc 60%, #c8e6c9 100%);
-  border-radius: 24px;
-  box-shadow: 8px 8px 24px 0 rgba(33, 150, 243, 0.10);
-  padding: 28px 32px 24px 32px;
-  min-width: 370px;
-  max-width: 420px;
+  background: linear-gradient(135deg, #bbdefb, #c8e6c9);
+  border-left: 6px solid #64b5f6;
+  border-radius: 16px;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.07);
+  padding: 2.6rem 2.5rem 2.2rem 2.5rem;
+  min-width: 480px;
+  max-width: 600px;
   color: #2360a0;
   font-family: 'Montserrat', Arial, sans-serif;
-  font-size: 1.15em;
-  margin-bottom: 0;
+  font-size: 1.18em;
+  margin-bottom: 1.5rem;
   transition: transform 0.2s;
+  min-height: 220px;
 }
 
 .trip-card:hover {
-  transform: translateY(-6px) scale(1.03);
-  box-shadow: 12px 16px 32px 0 rgba(33, 150, 243, 0.13);
+  transform: scale(1.01);
+  box-shadow: 0 10px 30px rgba(33, 150, 243, 0.13);
 }
 
 .trip-card h2 {
@@ -236,20 +246,24 @@ main.hero .next-trip h3 {
   font-size: 1em;
 }
 
+.trip-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
 .trip-status {
-  position: absolute;
-  top: 22px;
-  right: 32px;
   background: #e6f6e7;
   color: #388e3c;
   font-weight: bold;
   border-radius: 10px;
   padding: 7px 22px;
   font-size: 1.08em;
-  box-shadow: 0 2px 8px #2196f322;
+  box-shadow: none;
+  margin-left: 16px;
 }
 
-/* Бутонът вътре в кутийката */
 .trip-card .btn {
   margin-top: 18px;
   background: #2196f3;
@@ -268,7 +282,6 @@ main.hero .next-trip h3 {
   color: #fff;
 }
 
-/* Responsive */
 @media (max-width: 900px) {
   .main-nav {
     flex-direction: column;
@@ -294,4 +307,15 @@ main.hero .next-trip h3 {
     min-width: unset;
     max-width: 98vw;
   }
+}
+
+footer {
+  text-align: center;
+  color: #fff;
+  background: linear-gradient(to right, #2196f3, #43a047);
+  padding: 18px 0 10px 0;
+  margin-top: 40px;
+  border-radius: 0 0 10px 10px;
+  font-size: 1em;
+  box-shadow: 0 -2px 8px rgba(0,0,0,0.08);
 }
