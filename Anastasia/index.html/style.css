@@ -7,117 +7,130 @@
 }
 
 body {
-  background: linear-gradient(135deg, #233840, #507772);
+  background: linear-gradient(135deg, #e0f7fa, #e8f5e9);
   color: #f6f6e7;
   font-family: 'Montserrat', Arial, sans-serif;
   letter-spacing: 0.02em;
   margin: 0;
   min-height: 100vh;
-  
 }
 
 header {
-  background: #3a5757;
   box-shadow: 0 2px 8px rgba(0,0,0,0.08);
 }
 
+/* NAVIGATION BAR */
 .main-nav {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0 32px;
-  height: 60px;
-  background: #739E7E;
+  padding: 0.8rem 2rem;
+  height: 64px;
+  background: linear-gradient(to right, #2196f3, #43a047);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  flex-wrap: wrap;
 }
 
 .nav-left {
   display: flex;
   align-items: center;
-  gap: 30px;
+  gap: 16px;
+}
+
+.logo-pacifico {
+  font-family: 'Pacifico', cursive;
+  font-size: 2.2em;
+  color: #f6f6e7;
+  margin: 0;
+  letter-spacing: 1px;
 }
 
 .nav-links {
   display: flex;
-  gap: 18px;
+  gap: 22px;
   list-style: none;
   margin: 0;
   padding: 0;
 }
 
 .nav-links li a {
-  color: #e6f16a;
+  color: #fff;
   background: transparent;
   text-decoration: none;
   font-weight: bold;
   padding: 8px 18px;
   border-radius: 6px;
   transition: background 0.2s, color 0.2s;
+  font-size: 1.1em;
 }
 
 .nav-links li a:hover,
 .nav-links li a.active {
   background: #e6f16a;
-  color: #3a5757;
+  color: #f4f6f6;
 }
 
-.nav-right {
-  display: flex;
-  gap: 12px;
-}
-
-.nav-btn {
-  background: #e6f16a;
-  color: #3a5757;
-  padding: 8px 18px;
-  border-radius: 6px;
-  text-decoration: none;
-  font-weight: bold;
-  transition: background 0.2s, color 0.2s;
-}
-
-.nav-btn:hover {
-  background: #c8d94a;
-  color: #233840;
-}
-
-@media (max-width: 800px) {
+/* Responsive */
+@media (max-width: 900px) {
   .main-nav {
     flex-direction: column;
     align-items: flex-start;
     height: auto;
-    padding: 16px;
+    padding: 1rem;
   }
   .nav-left {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 10px;
+    margin-bottom: 10px;
   }
   .nav-links {
     flex-direction: column;
     gap: 8px;
+    width: 100%;
   }
-  .nav-right {
-    margin-top: 10px;
-  }
+}
+
+/* ...Останалата част от твоя CSS (presentation, hero, бутони и т.н.)... */
+.presentation h2 {
+  font-family: 'Pacifico', cursive;
+  font-size: 2.5em;
+  color:  #0d47a1;
+  text-shadow: 1px 2px 8px #23384055;
+  margin-bottom: 18px;
+}
+
+.presentation p, .presentation-list {
+  font-size: 1.22em;
+  line-height: 1.7;
+  color:  #0d47a1;
+  text-shadow: 0 1px 4px #23384033;
+}
+
+.presentation-list li {
+  margin-bottom: 10px;
+  padding-left: 4px;
+}
+
+.presentation b, .presentation strong {
+  color: #0c0c0c;
+  font-weight: 700;
 }
 
 main.hero {
   max-width: 600px;
   margin: 50px auto 0 auto;
-  background: #739E7E; /* фонът на малката кутийка */
+  background: #739E7E;
   border-radius: 14px;
   box-shadow: 0 4px 16px rgba(0,0,0,0.10);
   padding: 36px 32px 28px 32px;
-  transition: transform 0.3s ease; /* плавен zoom ефект */
+  transition: transform 0.3s ease;
 }
 
 main.hero:hover {
-  transform: scale(1.03); /* леко уголемяване при hover */
+  transform: scale(1.03);
 }
 
 main.hero .intro,
 main.hero .next-trip {
-  background: #507772; /* фон зад текста вътре в кутийката */
+  background: #507772;
   border-radius: 10px;
   padding: 22px 18px;
   margin-bottom: 18px;
@@ -131,7 +144,7 @@ main.hero .next-trip h3 {
 }
 
 .intro h2 {
-  color: #e6f16a;
+  color: #0a0a0a;
   margin-top: 0;
   margin-bottom: 10px;
   font-size: 1.5em;
@@ -151,18 +164,18 @@ main.hero .next-trip h3 {
   padding: 10px 22px;
   margin-right: 10px;
   border-radius: 6px;
-  border: 1px solid #e6f16a;
+  border: 1px solid #f5f6f2;
   font-size: 1em;
   font-weight: bold;
   text-decoration: none;
   cursor: pointer;
   transition: background 0.2s, color 0.2s;
-  background: #507772;
+   background: linear-gradient(to right, #2196f3, #43a047);
   color: #f6f6e7;
 }
 
 .btn:hover, .btn.secondary:hover, .btn.gallery:hover {
-  background: #e6f16a;
+  background: #f6f6e7;;
   color: #3a5757;
   border: 1px solid #507772;
 }
@@ -177,48 +190,108 @@ main.hero .next-trip h3 {
 }
 
 .next-trip h3 {
-  color: #e6f16a;
+  color: #f6f7f3;
   margin-top: 0;
 }
 
-footer {
-  text-align: center;
-  color: #e6f16a;
-  background: #3a5757;
-  padding: 18px 0 10px 0;
-  margin-top: 40px;
-  border-radius: 0 0 10px 10px;
+/* Контейнер за кутийките */
+.trips-container {
+  display: flex;
+  justify-content: flex-start;
+  gap: 32px;
+  margin: 40px 0 0 0;
+}
+
+/* Кутийка за пътуване */
+.trip-card {
+  position: relative;
+  background: linear-gradient(120deg, #b3e5fc 60%, #c8e6c9 100%);
+  border-radius: 24px;
+  box-shadow: 8px 8px 24px 0 rgba(33, 150, 243, 0.10);
+  padding: 28px 32px 24px 32px;
+  min-width: 370px;
+  max-width: 420px;
+  color: #2360a0;
+  font-family: 'Montserrat', Arial, sans-serif;
+  font-size: 1.15em;
+  margin-bottom: 0;
+  transition: transform 0.2s;
+}
+
+.trip-card:hover {
+  transform: translateY(-6px) scale(1.03);
+  box-shadow: 12px 16px 32px 0 rgba(33, 150, 243, 0.13);
+}
+
+.trip-card h2 {
+  margin: 0 0 10px 0;
+  font-size: 1.6em;
+  color: #2360a0;
+  font-weight: bold;
+}
+
+.trip-card p {
+  margin: 4px 0;
+  color: #388e3c;
   font-size: 1em;
 }
 
-.logo-pacifico {
-  font-family: 'Pacifico', cursive;
-  font-size: 2.2em;
-  color: #f6f6e7;
-  margin: 0;
+.trip-status {
+  position: absolute;
+  top: 22px;
+  right: 32px;
+  background: #e6f6e7;
+  color: #388e3c;
+  font-weight: bold;
+  border-radius: 10px;
+  padding: 7px 22px;
+  font-size: 1.08em;
+  box-shadow: 0 2px 8px #2196f322;
 }
 
-.presentation h2 {
-  font-family: 'Pacifico', cursive;
-  font-size: 2.5em;
-  color: #e6f16a;
-  text-shadow: 1px 2px 8px #23384055;
-  margin-bottom: 18px;
+/* Бутонът вътре в кутийката */
+.trip-card .btn {
+  margin-top: 18px;
+  background: #2196f3;
+  color: #fff;
+  border: none;
+  font-size: 1em;
+  border-radius: 8px;
+  padding: 10px 22px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
 }
 
-.presentation p, .presentation-list {
-  font-size: 1.22em;
-  line-height: 1.7;
-  color: #f6f6e7;
-  text-shadow: 0 1px 4px #23384033;
+.trip-card .btn:hover {
+  background: #43a047;
+  color: #fff;
 }
 
-.presentation-list li {
-  margin-bottom: 10px;
-  padding-left: 4px;
-}
-
-.presentation b, .presentation strong {
-  color: #e6f16a;
-  font-weight: 700;
+/* Responsive */
+@media (max-width: 900px) {
+  .main-nav {
+    flex-direction: column;
+    align-items: flex-start;
+    height: auto;
+    padding: 1rem;
+  }
+  .nav-left {
+    margin-bottom: 10px;
+  }
+  .nav-links {
+    flex-direction: column;
+    gap: 8px;
+    width: 100%;
+  }
+  .trips-container {
+    flex-direction: column;
+    align-items: center;
+    gap: 24px;
+  }
+  .trip-card {
+    width: 90%;
+    min-width: unset;
+    max-width: 98vw;
+  }
 }
