@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="bg">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Статистика – My Travel World</title>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(135deg, #e0f7fa, #e8f5e9);
+      color: #1b5e20;
+    }
+    nav {
+      background: linear-gradient(to right, #2196f3, #43a047);
+      padding: 0.8rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    }
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .logo img {
+      height: 40px;
+      border-radius: 6px;
+    }
+    .logo span {
+      color: white;
+      font-weight: bold;
+      font-size: 1.2rem;
+    }
+    .nav-links {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    .nav-links a {
+      color: white;
+      text-decoration: none;
+      font-weight: 500;
+      transition: opacity 0.3s;
+    }
+    .nav-links a:hover {
+      opacity: 0.8;
+    }
+    .container {
+      max-width: 1100px;
+      margin: 2rem auto;
+      padding: 2rem;
+      background: white;
+      border-radius: 20px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    }
+    h1 {
+      text-align: center;
+      font-size: 2.2rem;
+      color: #0d47a1;
+      margin-bottom: 1.5rem;
+    }
+    #map {
+      height: 500px;
+      border-radius: 15px;
+      margin-bottom: 2rem;
+    }
+    .stats {
+      display: flex;
+      justify-content: space-around;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+    .stat-box {
+      flex: 1 1 200px;
+      background: #e3f2fd;
+      padding: 1.2rem;
+      border-radius: 14px;
+      text-align: center;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.07);
+    }
+    .stat-box h3 {
+      margin: 0.5rem 0;
+      color: #2e7d32;
+      font-size: 1.5rem;
+    }
+  </style>
+</head>
+<body>
+  <nav>
+    <div class="logo">
+      <img src="logo.png">
+      <span>My Travel World</span>
+    </div>
+    <div class="nav-links">
+      <a href="index.html">Начало</a>
+      <a href="plan-trip.html">Планирай</a>
+      <a href="planned-trips.html">Планирани</a>
+      <a href="past-trips.html">Дневник</a>
+      <a href="gallery.html">Галерия</a>
+      <a href="packing-list.html">Багаж</a>
+      <a href="statistics.html">Статистика</a>
+    </div>
+  </nav>
+
+  <div class="container">
+    <h1>Статистика от пътуванията</h1>
+    <div id="map"></div>
+    <div class="stats">
+      <div class="stat-box">
+        <h3 id="countriesCount">0</h3>
+        <p>Посетени държави</p>
+      </div>
+      <div class="stat-box">
+        <h3 id="worldPercent">0%</h3>
+        <p>от света</p>
+      </div>
+      <div class="stat-box">
+        <h3 id="tripCount">0</h3>
+        <p>Общо пътувания</p>
+      </div>
+      <div class="stat-box">
+        <h3 id="totalBudget">0 лв.</h3>
+        <p>Изразходван бюджет</p>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script>
+    let visitedCountries = new Set(JSON.parse(localStorage.getItem('visitedCountries')) || []);
+    const pastTrips = JSON.parse(localStorage.getItem('pastTrips')) || [];
+    const countryLayers = {};
+
+    const map = L.map('map').setView([20, 0], 2);
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      maxZoom: 5,
+      attribution: '© OpenStreetMap'
+    }).addTo(map);
+
+    function getCountryStyle(iso) {
+      const visited = visitedCountries.has(iso);
+      return {
+        color: '#1b5e20',
+        weight: 1,
+        fillColor: visited ? '#66bb6a' : '#e0e0e0',
+        fillOpacity: visited ? 0.7 : 0.1
+      };
+    }
+
+    function toggleCountry(iso) {
+      if (visitedCountries.has(iso)) {
+        visitedCountries.delete(iso);
+      } else {
+        visitedCountries.add(iso);
+      }
+      localStorage.setItem('visitedCountries', JSON.stringify(Array.from(visitedCountries)));
+      updateLayerStyle(iso);
+      updateStats();
+    }
+
+    function updateLayerStyle(iso) {
+      if (countryLayers[iso]) {
+        countryLayers[iso].setStyle(getCountryStyle(iso));
+      }
+    }
+
+    function updateAllStyles() {
+      for (const iso in countryLayers) {
+        updateLayerStyle(iso);
+      }
+    }
+
+    function updateStats() {
+      const count = visitedCountries.size;
+      document.getElementById('countriesCount').textContent = count;
+      document.getElementById('worldPercent').textContent = ((count / 195) * 100).toFixed(1) + '%';
+      const totalBudget = pastTrips.reduce((sum, t) => sum + (parseFloat(t.budget) || 0), 0);
+      document.getElementById('tripCount').textContent = pastTrips.length;
+      document.getElementById('totalBudget').textContent = totalBudget.toFixed(2) + ' лв.';
+    }
+
+    fetch('https://raw.githubusercontent.com/datasets/geo-countries/master/data/countries.geojson')
+      .then(res => res.json())
+      .then(data => {
+        L.geoJSON(data, {
+          style: feature => getCountryStyle(feature.properties.ISO_A3),
+          onEachFeature: (feature, layer) => {
+            const iso = feature.properties.ISO_A3;
+            countryLayers[iso] = layer;
+            layer.on('click', () => toggleCountry(iso));
+            layer.bindTooltip(feature.properties.ADMIN);
+          }
+        }).addTo(map);
+
+        setTimeout(() => {
+          updateAllStyles();
+          updateStats();
+        }, 100);
+      });
+  </script>
+</body>
+</html>
