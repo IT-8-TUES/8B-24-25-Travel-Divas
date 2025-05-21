@@ -1,24 +1,44 @@
 const params = new URLSearchParams(window.location.search);
 const index = parseInt(params.get("tripIndex")) || 0;
 
-const allTrips = JSON.parse(localStorage.getItem("trips")) || [];
+const allTrips = JSON.parse(localStorage.getItem("plannedTrips")) || [];
 const trip = allTrips[index];
 
-if (trip) {
-    document.getElementById("trip-details").innerHTML = `
-        <h2>${trip.destination}</h2>
-        <p><strong>Период:</strong> ${trip.dates}</p>
-        <p><strong>Бюджет:</strong> ${trip.budget} лв.</p>
-        <p><strong>Дейности:</strong> ${trip.activities}</p>
-        <p><strong>Дневен план:</strong><br> ${trip.plan || "Няма въведен."}</p>
-        <p><strong>Бележки:</strong><br> ${trip.notes || "Няма добавени."}</p>
-        <div><strong>Снимки:</strong><br>${renderPhotos(trip.photos || [])}</div>
+function renderPhotos(photos) {
+    if (!photos || photos.length === 0) return "";
+    return `
+        <div><strong>Снимки:</strong><br>
+            ${photos.map(src => `<img src="${src}" class="trip-photo" alt="trip photo">`).join("")}
+        </div>
     `;
-} else {
-    document.getElementById("trip-details").innerHTML = `<p>Пътуването не беше намерено.</p>`;
 }
 
-function renderPhotos(photos) {
-    if (!photos.length) return "<em>Няма снимки</em>";
-    return photos.map(src => `<img src="${src}" class="trip-photo" alt="trip photo">`).join("");
+if (trip) {
+    const periodText = (trip.dateFrom && trip.dateTo)
+    ? `${trip.dateFrom} - ${trip.dateTo}`
+    : "Няма въведени дати";
+
+
+    let html = `
+        <h2>${trip.destination}</h2>
+        <p><strong>Период:</strong> ${periodText}</p>
+        <p><strong>Бюджет:</strong> ${trip.budget} лв.</p>
+        <p><strong>Дейности:</strong> ${trip.activities}</p>
+    `;
+
+    if (trip.plan) {
+        html += `<p><strong>Дневен план:</strong><br>${trip.plan}</p>`;
+    }
+
+    if (trip.notes) {
+        html += `<p><strong>Бележки:</strong><br>${trip.notes}</p>`;
+    }
+
+    if (trip.photos) {
+        html += renderPhotos(trip.photos);
+    }
+
+    document.getElementById("trip-details").innerHTML = html;
+} else {
+    document.getElementById("trip-details").innerHTML = `<p>Пътуването не беше намерено.</p>`;
 }
