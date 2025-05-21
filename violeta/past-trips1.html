@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="bg">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Дневник на минали пътувания</title>
+  <link rel="stylesheet" href="past-trips.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+  <header>
+    <nav>
+    <div class="logo">
+      <img src="logo.png">
+      <span>My Travel World</span>
+    </div>
+    <div class="nav-links">
+      <a href="Anastasia/index.html/index.html">Начало</a>
+      <a href="plan-trip.html">Планирай</a>
+      <a href="deya_naydenova/statistics.html">Планирани</a>
+      <a href="past-trips.html">Дневник</a>
+      <a href="gallery.html">Галерия</a>
+      <a href="packing-list.html">Багаж</a>
+      <a href="statistics.html">Статистика</a>
+    </div>
+  </nav>
+  </header>
+
+  <main>
+    <h1><i class="fas fa-globe"></i>Дневник на минали пътувания</h1>
+
+    <section class="filters">
+      <label for="filter-country">Филтър по държава:</label>
+      <select id="filter-country">
+        <option value="all">Всички</option>
+        <option value="Италия">Италия</option>
+        <option value="Япония">Япония</option>
+        <option value="Египет">Египет</option>
+        <option value="UAE">UAE</option>
+      </select>
+
+      <label for="filter-year">Филтър по година:</label>
+      <select id="filter-year">
+        <option value="all">Всички</option>
+        <option value="2024">2024</option>
+        <option value="2018">2018</option>
+        <option value="2019">2019</option>
+        <option value="2023">2023</option>
+      </select>
+    </section>
+
+    <section class="past-trip-entry" data-country="Италия" data-year="2024">
+      <h2 class="destinaciq">Рим, Италия (април 2024)</h2>
+      <div class="image-row">
+      <img class="snimka" src="images/rim1.jpg" alt="Рим" width="300">
+      <img class="snimka" src="images/rim2.jpg" alt="Рим" width="300">
+      <img class="snimka" src="images/rim3.jpg" alt="Рим" width="300">
+      <img class="snimka" src="images/rim4.jpg" alt="Рим" width="300">
+      </div>
+      <p class="opisanie">„Най-вкусната пица и невероятна архитектура!“</p>
+      <p>Оценка: 
+        <i class="fas fa-star"></i>
+        <i class="fas fa-star"></i>
+        <i class="fas fa-star"></i>
+        <i class="fas fa-star"></i>
+        <i class="far fa-star"></i> 
+        </p>
+    </section>
+
+    <section class="past-trip-entry" data-country="Япония" data-year="2018" >
+      <h2 class="destinaciq">Токио, Япония (октомври 2018)</h2>
+      <div class="image-row">
+      <img class="snimka" src="images/tokio1.jpg" alt="Токио" width="300">
+      <img class="snimka" src="images/tokio2.jpg" alt="Токио" width="300">
+      <img class="snimka" src="images/tokio3.jpg" alt="Токио" width="300">
+      </div>
+      <p class="opisanie">„Технологии, храмове и суши – уникално изживяване!“</p>
+      <p>Оценка:
+        <i class="fas fa-star"></i>
+        <i class="fas fa-star"></i>
+        <i class="fas fa-star"></i>
+        <i class="fas fa-star"></i>
+        <i class="fas fa-star"></i>  
+        </p>
+    </section>
+
+    <section class="past-trip-entry" data-country="Египет" data-year="2019" >
+      <h2 class="destinaciq">Кайро, Египет (август 2019)</h2>
+      <div class="image-row">
+      <img class="snimka" src="images/egipet6.jpg" alt="Египет" width="300">
+      <img class="snimka" src="images/egipet2.jpg" alt="Египет" width="300">
+      <img class="snimka" src="images/egipet3.jpg" alt="Египет" width="300">
+      <img class="snimka" src="images/egipet4.jpg" alt="Египет" width="300">
+      </div>
+      <p class="opisanie">„Пирамиди, пясъци и мистерии от древността!“</p>
+      <p>Оценка:
+        <i class="fas fa-star"></i>
+        <i class="fas fa-star"></i>
+        <i class="fas fa-star"></i>
+        <i class="fas fa-star"></i>
+        <i class="fas fa-star"></i>  
+        </p>  
+    </section>
+    
+    <section class="past-trip-entry" data-country="UAE" data-year="2023" >
+      <h2 class="destinaciq">Дубай, UAE (май 2023)</h2>
+      <div class="image-row">
+      <img class="snimka" src="images/dubai1.jpg" alt="" width="300">
+      <img class="snimka" src="images/dubai2.jpg" alt="" width="300">
+      <img class="snimka" src="images/dubai3.jpg" alt="" width="300">
+      <img class="snimka" src="images/dubai4.jpg" alt="" width="300">
+      </div>
+        <p class="opisanie">„Оазис на бъдещето сред златните пясъци!“</p>
+        <p>Оценка:
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          </p>
+    </section>
+
+    <footer>
+      <p>&copy; 2025 My Travel World </p>
+    </footer>
+  </main>
+  <script src="past-trips.js"></script>
+</body>
+</html>
