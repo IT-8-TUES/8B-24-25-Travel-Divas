@@ -1,0 +1,122 @@
+body {
+    font-family: 'Segoe UI', sans-serif;
+    background: linear-gradient(to bottom right, #e0f7fa, #e6ffe6);
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    max-width: 700px;
+    margin: 40px auto;
+    background-color: #fff;
+    padding: 30px 40px;
+    border-radius: 20px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+    text-align: center;
+    color: #2c3e91;
+    margin-bottom: 24px;
+}
+
+form label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+    color: #333;
+}
+
+form input,
+form textarea {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 12px;
+    box-sizing: border-box;
+    font-size: 16px;
+}
+
+form input:focus,
+form textarea:focus {
+    outline: none;
+    border-color: #2c3e91;
+    box-shadow: 0 0 5px rgba(44, 62, 145, 0.3);
+}
+
+button {
+    background: linear-gradient(to right, #3498db, #2ecc71);
+    color: white;
+    padding: 14px 20px;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+    transition: background 0.3s ease;
+    width: 100%;
+}
+
+button:hover {
+    background: linear-gradient(to right, #2c80b4, #27ae60);
+}
+
+#success-message {
+    margin-top: 20px;
+    padding: 12px;
+    background-color: #e6ffe6;
+    color: #2e7d32;
+    font-weight: bold;
+    text-align: center;
+    border-radius: 8px;
+}
+
+.hidden {
+    display: none;
+}
+.outer-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    padding: 20px;
+}
+
+.back-button {
+    display: inline-block;
+    margin-top: 20px;
+    text-decoration: none;
+    color: #2c3e91;
+    font-weight: bold;
+    transition: color 0.3s ease;
+}
+
+.back-button:hover {
+    color: #1a285e;
+}
+.trip-box {
+    background: linear-gradient(to right, #e0f7fa, #e6ffe6);
+    padding: 25px;
+    border-radius: 20px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+}
+
+.trip-box h2 {
+    color: #2c3e91;
+    margin-top: 0;
+}
+
+.trip-box p {
+    margin: 10px 0;
+    line-height: 1.5;
+}
+
+.trip-photo {
+    width: 100%;
+    max-width: 300px;
+    border-radius: 12px;
+    margin: 10px 10px 0 0;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
