@@ -4,41 +4,63 @@ const index = parseInt(params.get("tripIndex")) || 0;
 const allTrips = JSON.parse(localStorage.getItem("plannedTrips")) || [];
 const trip = allTrips[index];
 
-function renderPhotos(photos) {
-    if (!photos || photos.length === 0) return "";
-    return `
-        <div><strong>Снимки:</strong><br>
-            ${photos.map(src => `<img src="${src}" class="trip-photo" alt="trip photo">`).join("")}
-        </div>
-    `;
-}
+const tripContainer = document.getElementById("trip-details");
 
 if (trip) {
-    const periodText = (trip.dateFrom && trip.dateTo)
+  const period = (trip.dateFrom && trip.dateTo)
     ? `${trip.dateFrom} - ${trip.dateTo}`
-    : "Няма въведени дати";
+    : (trip.dates || "Няма въведени дати");
 
+  tripContainer.innerHTML = `
+    <h2>${trip.destination}</h2>
+    <p><strong>Период:</strong> ${period}</p>
+    <p><strong>Бюджет:</strong> ${trip.budget} лв.</p>
+    <p><strong>Дейности:</strong> ${trip.activities}</p>
 
-    let html = `
-        <h2>${trip.destination}</h2>
-        <p><strong>Период:</strong> ${periodText}</p>
-        <p><strong>Бюджет:</strong> ${trip.budget} лв.</p>
-        <p><strong>Дейности:</strong> ${trip.activities}</p>
-    `;
+    <label for="plan">Дневен план:</label>
+    <textarea id="plan" rows="4" placeholder="Добави дневен план...">${trip.plan || ""}</textarea>
 
-    if (trip.plan) {
-        html += `<p><strong>Дневен план:</strong><br>${trip.plan}</p>`;
+    <label for="notes">Бележки:</label>
+    <textarea id="notes" rows="4" placeholder="Добави бележки...">${trip.notes || ""}</textarea>
+
+    <button id="save-button">💾 Запази</button>
+  `;
+
+  const planInput = document.getElementById("plan");
+  const notesInput = document.getElementById("notes");
+  const saveButton = document.getElementById("save-button");
+
+  let originalPlan = planInput.value.trim();
+  let originalNotes = notesInput.value.trim();
+
+  function checkForChanges() {
+    const currentPlan = planInput.value.trim();
+    const currentNotes = notesInput.value.trim();
+
+    if (currentPlan !== originalPlan || currentNotes !== originalNotes) {
+      saveButton.classList.add("show");
+    } else {
+      saveButton.classList.remove("show");
     }
+  }
 
-    if (trip.notes) {
-        html += `<p><strong>Бележки:</strong><br>${trip.notes}</p>`;
-    }
+  planInput.addEventListener("input", checkForChanges);
+  notesInput.addEventListener("input", checkForChanges);
 
-    if (trip.photos) {
-        html += renderPhotos(trip.photos);
-    }
+  saveButton.addEventListener("click", () => {
+    trip.plan = planInput.value.trim();
+    trip.notes = notesInput.value.trim();
 
-    document.getElementById("trip-details").innerHTML = html;
+    allTrips[index] = trip;
+    localStorage.setItem("plannedTrips", JSON.stringify(allTrips));
+
+    originalPlan = trip.plan;
+    originalNotes = trip.notes;
+
+    saveButton.classList.remove("show");
+    alert("✅ Записано успешно!");
+  });
+
 } else {
-    document.getElementById("trip-details").innerHTML = `<p>Пътуването не беше намерено.</p>`;
+  tripContainer.innerHTML = `<p>Пътуването не беше намерено.</p>`;
 }
