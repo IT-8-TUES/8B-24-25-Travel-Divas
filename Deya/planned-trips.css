@@ -1,0 +1,128 @@
+
+    /* Основни стилове за тялото на страницата */
+    body {
+      margin: 0; /* Премахва отстоянието по подразбиране */
+      font-family: 'Segoe UI', sans-serif; /* Установява шрифта за целия документ */
+      background: linear-gradient(135deg, #e0f7fa, #e8f5e9); /* Фонов градиент за естетика */
+      color: #1b5e20; /* Задава основен цвят на текста (тъмнозелен) */
+    }
+
+    /* Навигационна лента */
+    nav {
+      background: linear-gradient(to right, #2196f3, #43a047); /* Синьо-зелен фон */
+      padding: 0.8rem 2rem; /* Отстояние отвътре по вертикала и хоризонтала */
+      display: flex; /* Flexbox за подравняване на съдържанието */
+      justify-content: space-between; /* Позиционира логото вляво, а навигацията вдясно */
+      align-items: center; /* Центрира по вертикала */
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Леки сенки за ефект */
+      flex-wrap: wrap; /* Позволява пренасяне на съдържание при по-малки екрани */
+    }
+
+    .logo {
+      display: flex; /* Подравнява логото и текста в една линия */
+      align-items: center;
+      gap: 0.5rem; /* Разстояние между изображението и текста */
+    }
+
+    .logo img {
+      height: 50px; /* Фиксирана височина на логото */
+      width: auto; /* Ширината се настройва автоматично */
+    }
+
+    .logo span {
+      color: white; /* Бял текст */
+      font-weight: bold; /* Удебелен текст */
+      font-size: 1.2rem; /* По-голям размер на шрифта */
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1rem; /* Разстояние между връзките */
+      flex-wrap: wrap; /* Позволява пренасяне на връзките на нов ред */
+      justify-content: center; /* Центрира връзките */
+    }
+
+    .nav-links a {
+      color: white; /* Бял цвят на текста */
+      text-decoration: none; /* Премахва подчертаването */
+      font-weight: 500;
+      transition: opacity 0.3s; /* Преход при навеждане с мишка */
+    }
+
+    .nav-links a:hover {
+      opacity: 0.8; /* Лека прозрачност при ховър */
+    }
+
+    .container {
+      max-width: 1000px; /* Максимална ширина на съдържанието */
+      margin: 3rem auto; /* Центрира контейнера вертикално и хоризонтално */
+      padding: 2rem; /* Вътрешно отстояние */
+      background: white; /* Бял фон */
+      border-radius: 20px; /* Заобляне на краищата */
+      box-shadow: 0 10px 30px rgba(0,0,0,0.1); /* Сянка за дълбочина */
+    }
+
+    h1 {
+      text-align: center; /* Центрира заглавието */
+      font-size: 2.2rem; /* Размер на шрифта */
+      color: #0d47a1; /* Тъмносин цвят */
+      margin-bottom: 2rem; /* Разстояние под заглавието */
+    }
+
+    .trip-card {
+      background: linear-gradient(135deg, #bbdefb, #c8e6c9); /* Светъл градиент */
+      border-left: 6px solid #64b5f6; /* Лента отляво за визуален ефект */
+      margin-bottom: 1.5rem; /* Разстояние между картите */
+      padding: 1.2rem; /* Отстояние вътре в картата */
+      border-radius: 16px;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.07);
+      transition: transform 0.2s; /* Анимация при ховър */
+    }
+
+    .trip-card:hover {
+      transform: scale(1.01); /* Леко уголемяване при ховър */
+    }
+
+    .trip-card.expired {
+      border-left-color: #ef5350; /* Червена лента за изтекли пътувания */
+      background: linear-gradient(135deg, #ffcdd2, #f8bbd0); /* Светло червен фон */
+    }
+
+    .trip-header {
+      display: flex;
+      justify-content: space-between; /* Заглавие вляво, статус вдясно */
+      align-items: center;
+    }
+
+    .trip-header h2 {
+      margin: 0;
+      color: #1a237e; /* Наситено синьо за дестинацията */
+    }
+
+    .trip-header strong {
+      background: #ffffff33;
+      padding: 0.3rem 0.8rem;
+      border-radius: 8px;
+      font-size: 0.9rem;
+    }
+
+    .trip-info p {
+      margin: 0.3rem 0;
+      color: #2e7d32; /* Зелен цвят за детайли */
+    }
+
+    .btn-archive {
+      margin-top: 1rem;
+      padding: 0.6rem 1.4rem;
+      background: linear-gradient(to right, #2196f3, #4caf50);
+      color: white;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      font-weight: bold;
+      transition: background 0.3s;
+    }
+
+    .btn-archive:hover {
+      background: linear-gradient(to right, #1976d2, #388e3c);
+    }
