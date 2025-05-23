@@ -1,0 +1,52 @@
+#add-item-form {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  margin-bottom: 18px;
+}
+#new-item-input {
+  flex: 1;
+  padding: 8px 12px;
+  border-radius: 6px;
+  border: 1px solid #b2dfdb;
+  font-size: 1em;
+}
+#packing-list li {
+  margin-bottom: 10px;
+  font-size: 1.1em;
+}
+main.hero {
+  background: #fff;
+  color: #222;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.10);
+  border-radius: 14px;
+}
+main.hero .intro,
+main.hero .intro h2,
+main.hero .intro p {
+  color: #222;
+}
+main.hero .intro {
+  background: #fff;         
+  color: #222;              
+  border-radius: 10px;
+  padding: 20px 10px;
+  margin-bottom: 18px;
+  text-align: center;      
+  box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+}
+
+main.hero h2 {
+  font-weight: 800;
+  margin-bottom: 8px;
+  text-align: center;
+}
+main.hero p {
+  text-align: center;
+  color: #222;
+  margin-bottom: 18px;
+}
+#reset-list {
+  display: block;
+  margin: 18px auto 0 auto;
+}

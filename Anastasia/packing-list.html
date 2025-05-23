@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="bg">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Чеклист за багаж</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="stylelist.css" />
+</head>
+<body>
+  <header>
+    <nav class="main-nav">
+      <div class="nav-left">
+        <img src="../logo.png" alt="My Travel World Logo" class="nav-logo">
+        <span class="nav-title">My Travel World</span>
+      </div>
+      <ul class="nav-links">
+        <li><a href="../Anastasia/index.html" class="active">Начало</a></li>
+        <li><a href="../Airis/plan_trip.html">Планирай</a></li>
+        <li><a href="../planned-trips.html">Планирани</a></li>
+        <li><a href="../violeta/past-trips.html">Дневник</a></li>
+        <li><a href="../violeta/gallery.html">Галерия</a></li>
+        <li><a href="../Anastasia/packing-list.html">Багаж</a></li>
+        <li><a href="../statistics.html">Статистика</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main class="hero">
+  <h2>Багаж</h2>
+  <p>Отбележи какво си взел и добави свои неща към списъка!</p>
+  <form id="add-item-form">
+    <input type="text" id="new-item-input" placeholder="Добави нов елемент..." required>
+    <button type="submit" class="btn">Добави</button>
+  </form>
+  <ul id="packing-list" class="presentation-list"></ul>
+  <button id="reset-list" class="btn secondary" type="button" style="margin-top:18px;">Върни началния списък</button>
+</main>
+
+  <footer>
+    <p>&copy; 2025 My Travel World</p>
+  </footer>
+
+  <script src="menu.js"></script>
+  <script src="list.js"></script>
+</body>
+</html>

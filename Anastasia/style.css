@@ -1,7 +1,7 @@
 body {
   background: linear-gradient(135deg, #e0f7fa, #e8f5e9);
   color: #f6f6e7;
-  font-family: 'Montserrat', Arial, sans-serif;
+  font-family: 'Segoe UI', sans-serif;
   letter-spacing: 0.02em;
   margin: 0;
   min-height: 100vh;
@@ -12,41 +12,36 @@ header {
 }
 
 .main-nav {
-  background: linear-gradient(to right, #21a7df, #43b47e);
-  padding: 0.5rem 1.2rem 0.5rem 1.2rem;
+  background: linear-gradient(to right, #2196f3, #43a047);
+  padding: 0.8rem 2rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
   flex-wrap: wrap;
-  min-height: 60px;
-  border-radius: 0; 
 }
 
 .nav-left {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 0.5rem;
 }
 
 .nav-logo {
-  height: 38px;      
-  margin-right: 10px;
+  height: 40px;
+  width: auto;
+  border-radius: 6px;
 }
 
 .nav-title {
-  font-family: 'Montserrat', Arial, sans-serif;
-  font-size: 1.25em; 
-  font-weight: 700;
-  color: #fff;
-  margin: 0;
-  letter-spacing: 0.5px;
-  line-height: 1;
+  color: white;
+  font-weight: bold;
+  font-size: 1.16rem;
 }
 
 .nav-links {
   display: flex;
-  gap: 1.1rem; 
+  gap: 0.84rem;
   flex-wrap: wrap;
   justify-content: center;
   list-style: none;
@@ -54,32 +49,15 @@ header {
   padding: 0;
 }
 
-.nav-links li {
-  display: inline;
-}
-
 .nav-links li a {
-  color: #fff;
+  color: white;
   text-decoration: none;
-  font-weight: 700;
-  font-size: 1em; 
-  transition: color 0.2s;
-  background: transparent;
-  border-radius: 6px;
-  padding: 6px 10px; 
-  position: relative;
+  font-weight: 500;
+  transition: opacity 0.3s;
 }
 
-.nav-links li a.active::after {
-  display: none;
-}
-
-.nav-links li a:hover,
-.nav-links li a.active {
-  color: #e0e0e0;
-  background: transparent;
-  font-weight: 700;
-  text-shadow: none;
+.nav-links li a:hover {
+  opacity: 0.8;
 }
 
 @media (max-width: 900px) {
@@ -94,7 +72,6 @@ header {
   }
   .nav-links {
     flex-direction: column;
-    gap: 8px;
     width: 100%;
   }
 }
@@ -105,6 +82,8 @@ header {
   color:  #0d47a1;
   text-shadow: 1px 2px 8px #23384055;
   margin-bottom: 18px;
+  padding-left: 24px;
+  padding-right: 24px;
 }
 
 .presentation p, .presentation-list {
@@ -112,11 +91,18 @@ header {
   line-height: 1.7;
   color:  #0d47a1;
   text-shadow: 0 1px 4px #23384033;
+  padding-left: 24px;
+  padding-right: 24px;
+}
+
+.presentation-list {
+  padding-left: 65px; 
 }
 
 .presentation-list li {
   margin-bottom: 10px;
-  padding-left: 4px;
+  padding-left: 10px;
+  padding-right: 24px;
 }
 
 .presentation b, .presentation strong {
@@ -167,6 +153,7 @@ main.hero .next-trip h3 {
 
 .buttons {
   margin-bottom: 28px;
+  padding-left: 24px;
 }
 
 .btn, .btn.secondary, .btn.gallery {
@@ -209,6 +196,8 @@ main.hero .next-trip h3 {
   justify-content: flex-start;
   gap: 32px;
   margin: 40px 0 0 0;
+  padding-left: 24px;
+  padding-right: 24px;
 }
 
 .trip-card {
@@ -315,7 +304,6 @@ footer {
   background: linear-gradient(to right, #2196f3, #43a047);
   padding: 18px 0 10px 0;
   margin-top: 40px;
-  border-radius: 0 0 10px 10px;
   font-size: 1em;
   box-shadow: 0 -2px 8px rgba(0,0,0,0.08);
 }

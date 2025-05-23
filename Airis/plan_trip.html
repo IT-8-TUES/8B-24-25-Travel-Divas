@@ -1,39 +1,58 @@
 <!DOCTYPE html>
 <html lang="bg">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Планиране на пътуване</title>
-    <link rel="stylesheet" href="a_styles.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Планиране на пътуване</title>
+  <link rel="stylesheet" href="a_styles.css">
+  <!-- Flatpickr стил -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
 </head>
 <body>
-    <div class="outer-wrapper">
-        <div class="container">
-            <h1>Планирай своето пътуване</h1>
-            <form id="trip-form">
-                <label for="destination">Дестинация:</label>
-                <input type="text" id="destination" name="destination" required>
+  <div class="outer-wrapper">
+    <div class="container">
+      <h1>Планирай своето пътуване</h1>
+      <form id="trip-form">
+        <label for="destination">Дестинация:</label>
+        <input type="text" id="destination" name="destination" required>
 
-                <label for="dates">Дати:</label>
-                <input type="text" id="dates" name="dates" placeholder="напр. 01.07.2025 - 07.07.2025" required>
+        <label for="dates">Дати:</label>
+        <input type="text" id="dates" name="dates" placeholder="Избери период..." required>
 
-                <label for="budget">Бюджет (лв):</label>
-                <input type="number" id="budget" name="budget" min="1" required>
+        <label for="budget">Бюджет (лв):</label>
+        <input type="number" id="budget" name="budget" min="1" required>
 
-                <label for="activities">Цел / Дейности:</label>
-                <textarea id="activities" name="activities" rows="4" required></textarea>
+        <label for="activities">Цел / Дейности:</label>
+        <textarea id="activities" name="activities" rows="4" required></textarea>
 
-                <button type="submit">Запази</button>
-            </form>
-            <div id="success-message" class="hidden">Пътуването е успешно записано!</div>
-            <a href="../Anastasia/index.html" class="back-button">← Назад</a>
+        <button type="submit">Запази</button>
+      </form>
 
-
-        </div>
+      <div id="success-message" class="hidden">Пътуването е успешно записано!</div>
+      <a href="../Anastasia/index.html" class="back-button">← Назад</a>
     </div>
+  </div>
 
-    <script src="plan_trip.js"></script>
+  <script src="plan_trip.js"></script>
 
-    
+  
+  <script src="https://cdn.jsdelivr.net/npm/flatpickr/dist/l10n/bg.js"></script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+<script src="https://cdn.jsdelivr.net/npm/flatpickr/dist/l10n/bg.js"></script>
+
+<script>
+    flatpickr("#dates", {
+      mode: "range",
+      dateFormat: "d.m.Y",
+      locale: {
+        ...flatpickr.l10ns.bg,
+        rangeSeparator: " - " 
+      }
+    });
+  </script>
+  
+
 </body>
 </html>
