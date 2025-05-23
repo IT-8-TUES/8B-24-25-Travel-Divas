@@ -82,6 +82,8 @@ header {
   color:  #0d47a1;
   text-shadow: 1px 2px 8px #23384055;
   margin-bottom: 18px;
+  padding-left: 24px;
+  padding-right: 24px;
 }
 
 .presentation p, .presentation-list {
@@ -89,11 +91,18 @@ header {
   line-height: 1.7;
   color:  #0d47a1;
   text-shadow: 0 1px 4px #23384033;
+  padding-left: 24px;
+  padding-right: 24px;
+}
+
+.presentation-list {
+  padding-left: 65px; 
 }
 
 .presentation-list li {
   margin-bottom: 10px;
-  padding-left: 4px;
+  padding-left: 10px;
+  padding-right: 24px;
 }
 
 .presentation b, .presentation strong {
@@ -144,6 +153,7 @@ main.hero .next-trip h3 {
 
 .buttons {
   margin-bottom: 28px;
+  padding-left: 24px;
 }
 
 .btn, .btn.secondary, .btn.gallery {
@@ -186,6 +196,8 @@ main.hero .next-trip h3 {
   justify-content: flex-start;
   gap: 32px;
   margin: 40px 0 0 0;
+  padding-left: 24px;
+  padding-right: 24px;
 }
 
 .trip-card {
