@@ -1,0 +1,37 @@
+<!DOCTYPE html> <!-- Декларира, че документът е HTML5 стандарт -->
+<html lang="bg"> <!-- HTML елемент, с език 'bg' (български) -->
+
+<head>
+  <meta charset="UTF-8" /> <!-- Задава кодировка UTF-8, която поддържа кирилица и специални символи -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" /> <!-- За правилно мащабиране на мобилни устройства -->
+  <title>Планирани пътувания – My Travel World</title> <!-- Заглавие на страницата, което се показва в браузъра -->
+  <link rel="stylesheet" href="planned-trips.css" />
+</head>
+
+<body>
+  <!-- Навигационна лента с лого и връзки към други страници -->
+  <nav>
+    <div class="logo">
+      <img src="logo_travelsait.png"> <!-- Показва логото -->
+      <span>My Travel World</span> <!-- Името на сайта -->
+    </div>
+    <div class="nav-links">
+      <!-- Връзки към другите секции на сайта -->
+      <a href="../Anastasia/index.html">Начало</a>
+      <a href="../Airis/plan_trip.html">Планирай</a>
+      <a href="planned-trips.html">Планирани</a>
+      <a href="../violeta/past-trips1.html">Дневник</a>
+      <a href="../violeta/gallery.html">Галерия</a>
+      <a href="../Anastasia/">Багаж</a>
+      <a href="statistics.html">Статистика</a>
+    </div>
+  </nav>
+
+  <!-- Контейнер, в който ще се визуализират пътуванията -->
+  <div class="container">
+    <h1>Планирани пътувания</h1> <!-- Заглавие -->
+    <div id="tripsList"></div> <!-- Тук ще се добавят динамично карти с пътувания -->
+  </div>
+  <script src="planned-trips.js"></script>
+</body>
+</html>

@@ -1,0 +1,97 @@
+
+/* Основни стилове за тялото на страницата */
+body {
+  margin: 0; /* Премахва отстоянието по подразбиране */
+  font-family: 'Segoe UI', sans-serif; /* Избира шрифт */
+  background: linear-gradient(135deg, #e0f7fa, #e8f5e9); /* Фонов градиент */
+  color: #1b5e20; /* Основен цвят на текста */
+}
+
+/* Стил за навигацията */
+nav {
+  background: linear-gradient(to right, #2196f3, #43a047); /* Цветен градиент */
+  padding: 0.8rem 2rem; /* Отстояние вътре в контейнера */
+  display: flex; /* Flexbox за подредба */
+  justify-content: space-between; /* Разстояние между логото и линковете */
+  align-items: center;
+  flex-wrap: wrap; /* Позволява пренасяне на елементи */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Сянка под менюто */
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem; /* Разстояние между логото и текста */
+}
+
+.logo img {
+  height: 50px; /* Височина на логото */
+}
+
+.logo span {
+  color: white;
+  font-weight: bold;
+  font-size: 1.2rem;
+}
+
+.nav-links {
+  display: flex;
+  gap: 1rem; /* Разстояние между линковете */
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.nav-links a {
+  color: white;
+  text-decoration: none;
+  font-weight: 500;
+  transition: opacity 0.3s; /* Плавен преход при ховър */
+}
+
+.nav-links a:hover {
+  opacity: 0.8;
+}
+
+.container {
+  max-width: 1100px;
+  margin: 2rem auto; /* Центриране и отстояние */
+  padding: 2rem;
+  background: white;
+  border-radius: 20px; /* Заобляне на ъглите на кутията */
+  box-shadow: 0 10px 30px rgba(0,0,0,0.1); /* Сянка */
+}
+
+h1 {
+  text-align: center;
+  font-size: 2.2rem;
+  color: #0d47a1; /* Тъмносин цвят */
+  margin-bottom: 1.5rem;
+}
+
+#map {
+  height: 500px; /* Височина на картата */
+  border-radius: 15px;
+  margin-bottom: 2rem;
+}
+
+.stats {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.stat-box {
+  flex: 1 1 200px; /* Гъвкавост и минимален размер */
+  background: #e3f2fd; /* Светлосин фон */
+  padding: 1.2rem;
+  border-radius: 14px;
+  text-align: center;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.07);
+}
+
+.stat-box h3 {
+  margin: 0.5rem 0;
+  color: #2e7d32;
+  font-size: 1.5rem;
+}
