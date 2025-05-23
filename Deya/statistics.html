@@ -1,0 +1,58 @@
+<!DOCTYPE html> 
+<html lang="bg"> 
+
+<head>
+  <meta charset="UTF-8"> 
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Статистика – My Travel World</title> 
+
+  <!-- Връзка към външната CSS библиотека за картата (Leaflet) -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+  <link rel="stylesheet" href="statistics.css" />
+</head>
+
+<body>
+  <nav>
+    <div class="logo">
+      <img src="logo_travelsait.png"> <!-- Изображение на логото -->
+      <span>My Travel World</span> <!-- Текст до логото -->
+    </div>
+    <div class="nav-links">
+      <a href="../Anastasia/index.html">Начало</a>
+      <a href="../Airis/plan_trip.html">Планирай</a>
+      <a href="planned-trips.html">Планирани</a>
+      <a href="../violeta/past-trips.html">Дневник</a>
+      <a href="../violeta/gallery.html">Галерия</a>
+      <a href="../Anastasia/">Багаж</a>
+      <a href="statistics.html">Статистика</a>
+    </div>
+  </nav>
+
+  <div class="container">
+    <h1>Статистика от пътуванията</h1> <!-- Заглавие -->
+    <div id="map"></div> <!-- Карта -->
+    <div class="stats"> <!-- Кутии със статистика -->
+      <div class="stat-box">
+        <h3 id="countriesCount">0</h3>
+        <p>Посетени държави</p>
+      </div>
+      <div class="stat-box">
+        <h3 id="worldPercent">0%</h3>
+        <p>от света</p>
+      </div>
+      <div class="stat-box">
+        <h3 id="tripCount">0</h3>
+        <p>Общо пътувания</p>
+      </div>
+      <div class="stat-box">
+        <h3 id="totalBudget">0 лв.</h3>
+        <p>Изразходван бюджет</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Зареждане на Leaflet JS библиотеката -->
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script src="statistics.js"></script>
+</body>
+</html>
