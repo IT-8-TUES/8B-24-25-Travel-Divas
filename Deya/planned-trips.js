@@ -34,7 +34,10 @@
             <p>Бюджет: ${trip.budget} лв.</p>
             <p>Остават: ${expired ? '0' : diffDays} дни</p>
           </div>
-          <button class="btn-archive" onclick="archiveTrip(${index})">Архивирай</button>
+          <div class="buttons">
+             <button class="btn-archive" onclick="archiveTrip(${index})">Архивирай</button>
+             <button class="btn-details" onclick="goToDetails(${index})">Детайли</button>
+        </div>
         `;
 
         tripsList.appendChild(card); // Добавяме картата към екрана
@@ -56,3 +59,9 @@
     }
 
     loadTrips(); // Стартираме зареждането на пътуванията при отваряне на страницата
+    function goToDetails(index) {
+        const trips = JSON.parse(localStorage.getItem('plannedTrips')) || [];
+        localStorage.setItem('selectedTrip', JSON.stringify(trips[index]));
+        window.location.href = '../Airis/trip_details.html';
+      }
+      

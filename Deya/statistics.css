@@ -95,3 +95,12 @@ h1 {
   color: #2e7d32;
   font-size: 1.5rem;
 }
+footer {
+    text-align: center;
+    color: #fff;
+    background: linear-gradient(to right, #2196f3, #43a047);
+    padding: 18px 0 10px 0;
+    margin-top: 40px;
+    font-size: 1em;
+    box-shadow: 0 -2px 8px rgba(0,0,0,0.08);
+  }
