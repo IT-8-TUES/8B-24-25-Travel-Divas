@@ -1,8 +1,11 @@
- body {
+body {
   font-family: 'Segoe UI', sans-serif;
   background: linear-gradient(135deg, #e0f7fa, #e8f5e9);
   color: #1b5e20;
   margin: 0;
+}
+
+main {
   padding: 0 20px;
 }
 
@@ -132,11 +135,14 @@ main h1 {
 
 .image-row {
   display: flex;
-  justify-content: center;
+  justify-content: flex-start; /* снимките започват отляво */
   gap: 20px;
   overflow-x: auto;
   flex-wrap: nowrap;
   margin: 20px 0;
+  width: 100%;
+  scrollbar-color: #81c784 #e0f7fa; /* за по-видим скролбар в поддържани браузъри */
+  scrollbar-width: thin;
 }
 
 /* Описание на пътуването */
@@ -157,11 +163,10 @@ i.far.fa-star {
 /* Footer */
 footer {
   text-align: center;
-  color: #33691e;
-  background: #a5d6a7;
+  color: white;
+  background: linear-gradient(to right, #2196f3, #43a047);
   padding: 18px 0;
   margin-top: 40px;
-  border-radius: 0 0 10px 10px;
   font-size: 1rem;
 }
 
