@@ -31,5 +31,5 @@ document.getElementById('trip-form').addEventListener('submit', function(event) 
     allTrips.push(tripData);
     localStorage.setItem("plannedTrips", JSON.stringify(allTrips));
 
-    window.location.href = "../planned-trips.html";
+    window.location.href = "../Deya/planned-trips.html";
 });
