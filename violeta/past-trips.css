@@ -1,183 +1,182 @@
-body {
-  font-family: 'Segoe UI', sans-serif;
-  background: linear-gradient(135deg, #e0f7fa, #e8f5e9);
-  color: #1b5e20;
-  margin: 0;
-}
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(135deg, #e0f7fa, #e8f5e9);
+      color: #1b5e20;
+    }
 
-main {
-  padding: 0 20px;
-}
+    nav {
+      background: linear-gradient(to right, #2196f3, #43a047);
+      padding: 0.8rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      flex-wrap: wrap;
+    }
 
-/* Навигация */
-nav {
-  background: linear-gradient(to right, #2196f3, #43a047);
-  padding: 0.8rem 2rem;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-  flex-wrap: wrap;
-}
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
 
-.logo {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-}
+    .logo img {
+      height: 50px;
+      width: auto;
+    }
 
-.logo img {
-  height: 50px;
-  width: auto;
-}
+    .logo span {
+      color: white;
+      font-weight: bold;
+      font-size: 1.2rem;
+    }
 
-.logo span {
-  color: white;
-  font-weight: bold;
-  font-size: 1.2rem;
-}
+    .nav-links {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
 
-.nav-links {
-  display: flex;
-  gap: 1rem;
-  flex-wrap: wrap;
-  justify-content: center;
-}
+    .nav-links a {
+      color: white;
+      text-decoration: none;
+      font-weight: 500;
+      transition: opacity 0.3s;
+    }
 
-.nav-links a {
-  color: white;
-  text-decoration: none;
-  font-weight: 500;
-  transition: opacity 0.3s;
-}
+    .nav-links a:hover {
+      opacity: 0.8;
+    }
 
-.nav-links a:hover {
-  opacity: 0.8;
-}
+    .container {
+      max-width: 1000px;
+      margin: 3rem auto;
+      padding: 2rem;
+      background: white;
+      border-radius: 20px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    }
 
-/* Заглавие */
-main h1 {
-  text-align: center;
-  margin: 25px 0;
-  font-weight: 700;
-  font-size: 2.5rem;
-  color: #0d47a1;
-  text-shadow: 1px 1px 3px #90caf9;
-}
+    h1 {
+      text-align: center;
+      font-size: 2.2rem;
+      color: #0d47a1;
+      margin-bottom: 2rem;
+    }
 
-/* Филтри секция */
-.filters {
-  display: flex;
-  justify-content: center;
-  gap: 30px;
-  margin-bottom: 35px;
-  flex-wrap: wrap;
-}
+    .trip-card {
+      background: linear-gradient(135deg, #bbdefb, #c8e6c9);
+      border-left: 6px solid #64b5f6;
+      margin-bottom: 1.5rem;
+      padding: 1.2rem;
+      border-radius: 16px;
+      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.07);
+      transition: transform 0.2s;
+    }
 
-.filters label {
-  color: #1b5e20;
-  font-weight: 600;
-  font-size: 1.1rem;
-}
+    .trip-card:hover {
+      transform: scale(1.01);
+    }
 
-.filters select {
-  padding: 8px 14px;
-  border-radius: 8px;
-  border: 2px solid #aed581;
-  background-color: #ffffff;
-  color: #1b5e20;
-  font-weight: 600;
-  font-size: 1rem;
-  cursor: pointer;
-  transition: border-color 0.25s ease;
-}
+    .trip-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
 
-.filters select:hover,
-.filters select:focus {
-  border-color: #66bb6a;
-  outline: none;
-}
+    .trip-header h2 {
+      margin: 0;
+      color: #1a237e;
+    }
 
-/* Блокове за пътувания */
-.past-trip-entry {
-  background: linear-gradient(135deg, #bbdefb, #c8e6c9);
-  border-left: 6px solid #64b5f6;
-  padding: 18px 22px;
-  margin-bottom: 28px;
-  border-radius: 16px;
-  transition: transform 0.3s ease;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-}
+    .trip-header strong {
+      background: #ffffff33;
+      padding: 0.3rem 0.8rem;
+      border-radius: 8px;
+      font-size: 0.9rem;
+    }
 
-.past-trip-entry:hover {
-  transform: scale(1.02);
-}
+    .trip-info p {
+      margin: 0.3rem 0;
+      color: #2e7d32;
+    }
 
-/* Заглавие на пътуването */
-.destinaciq {
-  margin-top: 0;
-  color: #1a237e;
-  font-weight: 700;
-  font-size: 1.5rem;
-}
+    .rating {
+      color: #ffd700;
+    }
 
-/* Снимки */
-.snimka {
-  width: 250px;
-  height: 280px;
-  object-fit: cover;
-  border-radius: 10px;
-  border: 2px solid #81c784;
-  box-shadow: 0 3px 10px rgba(0,0,0,0.2);
-  flex-shrink: 0;
-}
+    .memory-comment,
+    .memory-photo {
+      margin-top: 1rem;
+    }
 
-.image-row {
-  display: flex;
-  justify-content: flex-start; /* снимките започват отляво */
-  gap: 20px;
-  overflow-x: auto;
-  flex-wrap: nowrap;
-  margin: 20px 0;
-  width: 100%;
-  scrollbar-color: #81c784 #e0f7fa; /* за по-видим скролбар в поддържани браузъри */
-  scrollbar-width: thin;
-}
+    .memory-photo-scroll {
+      display: flex;
+      gap: 1rem;
+      overflow-x: auto;
+      scroll-behavior: smooth;
+      padding-bottom: 0.5rem;
+    }
 
-/* Описание на пътуването */
-.opisanie {
-  font-size: 1rem;
-  line-height: 1.5;
-  color: #2e7d32;
-  margin: 6px 0;
-}
+    .memory-photo-scroll::-webkit-scrollbar {
+      height: 8px;
+    }
 
-/* Звезди за оценка */
-i.fas.fa-star,
-i.far.fa-star {
-  color: #ffb300;
-  margin-right: 4px;
-}
+    .memory-photo-scroll::-webkit-scrollbar-thumb {
+      background-color: #90caf9;
+      border-radius: 8px;
+    }
 
-/* Footer */
-footer {
-  text-align: center;
-  color: white;
-  background: linear-gradient(to right, #2196f3, #43a047);
-  padding: 18px 0;
-  margin-top: 40px;
-  font-size: 1rem;
-}
+    .memory-photo-scroll img {
+      height: 200px;
+      width: auto;
+      border-radius: 12px;
+      object-fit: cover;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+      transition: transform 0.3s ease;
+    }
 
-/* Мобилна адаптация */
-@media (max-width: 600px) {
-  .filters {
-    flex-direction: column;
-    align-items: center;
-  }
+    .memory-photo-scroll img:hover {
+      transform: scale(1.05);
+    }
 
-  .snimka {
-    width: 90%;
-    height: auto;
-  }
-}
+    select,
+    input[type="file"],
+    textarea,
+    input[type="text"] {
+      margin-top: 0.5rem;
+      padding: 0.4rem;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+      width: 100%;
+    }
+
+    .btn-archive,
+    .btn-details {
+      margin-top: 1rem;
+      padding: 0.6rem 1.4rem;
+      background: linear-gradient(to right, #2196f3, #4caf50);
+      color: white;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      font-weight: bold;
+      transition: background 0.3s;
+    }
+
+    .btn-archive:hover,
+    .btn-details:hover {
+      background: linear-gradient(to right, #1976d2, #388e3c);
+    }
+
+    footer {
+      text-align: center;
+      color: #fff;
+      background: linear-gradient(to right, #2196f3, #43a047);
+      padding: 18px 0 10px 0;
+      margin-top: 40px;
+      font-size: 1em;
+      box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.08);
+    }
