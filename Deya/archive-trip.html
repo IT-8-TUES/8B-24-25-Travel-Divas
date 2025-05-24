@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="bg">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Архивиране на пътуване – My Travel World</title>
+  <link rel="stylesheet" href="planned-trips.css" />
+  <style>
+    .rating-stars {
+      display: flex;
+      flex-direction: row-reverse;
+      justify-content: flex-end;
+      gap: 5px;
+      margin-top: 5px;
+    }
+
+    .rating-stars input[type="radio"] {
+      display: none;
+    }
+
+    .rating-stars label {
+      font-size: 1.8rem;
+      color: #ccc;
+      cursor: pointer;
+      transition: color 0.2s;
+    }
+
+    .rating-stars input[type="radio"]:checked ~ label,
+    .rating-stars label:hover,
+    .rating-stars label:hover ~ label {
+      color: gold;
+    }
+
+    textarea, input[type="file"] {
+      background: #f5f5f5;
+      border: 1px solid #ccc;
+      border-radius: 12px;
+      padding: 10px;
+      width: 100%;
+      font-size: 1rem;
+      margin-top: 5px;
+    }
+
+    .image-preview {
+      margin-top: 10px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .image-preview img {
+      max-width: 100px;
+      max-height: 100px;
+      border-radius: 10px;
+      object-fit: cover;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    }
+  </style>
+</head>
+<body>
+  <nav>
+    <div class="logo">
+      <img src="logo.png">
+      <span>My Travel World</span>
+    </div>
+    <div class="nav-links">
+      <a href="../Anastasia/index.html">Начало</a>
+      <a href="../Airis/plan_trip.html">Планирай</a>
+      <a href="planned-trips.html">Планирани</a>
+      <a href="../violeta/past-trips1.html">Дневник</a>
+      <a href="../violeta/gallery.html">Галерия</a>
+      <a href="../Anastasia/">Багаж</a>
+      <a href="statistics.html">Статистика</a>
+    </div>
+  </nav>
+
+  <div class="container">
+    <h1>Архивиране на пътуване</h1>
+
+    <div class="trip-card">
+      <div class="trip-header">
+        <h2 id="tripDestination">Дестинация</h2>
+        <strong id="tripStatus">Предстоящо</strong>
+      </div>
+
+      <div class="trip-info">
+        <p><strong>Дати:</strong> <span id="tripDates"></span></p>
+
+        <p><strong>Оценка:</strong></p>
+        <div class="rating-stars">
+          <input type="radio" id="star5" name="rating" value="5"><label for="star5">★</label>
+          <input type="radio" id="star4" name="rating" value="4"><label for="star4">★</label>
+          <input type="radio" id="star3" name="rating" value="3"><label for="star3">★</label>
+          <input type="radio" id="star2" name="rating" value="2"><label for="star2">★</label>
+          <input type="radio" id="star1" name="rating" value="1"><label for="star1">★</label>
+        </div>
+
+        <p><strong>Коментар:</strong></p>
+        <textarea id="comment" placeholder="Как мина пътуването?" rows="3"></textarea>
+
+        <p><strong>Снимки:</strong></p>
+        <input type="file" id="photo" accept="image/*" multiple>
+        <div class="image-preview" id="imagePreview"></div>
+      </div>
+
+      <div class="form-buttons" style="margin-top: 1rem;">
+        <button class="btn-archive" onclick="saveArchivedTrip()">Запази</button>
+        <button class="btn-details" onclick="window.location.href='planned-trips.html'">Назад</button>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <p>&copy; 2025 My Travel World</p>
+  </footer>
+
+  <script>
+    const tripIndex = localStorage.getItem('archivingTripIndex');
+    const trips = JSON.parse(localStorage.getItem('plannedTrips')) || [];
+    const trip = trips[tripIndex];
+
+    if (trip) {
+      document.getElementById('tripDestination').textContent = trip.destination;
+      document.getElementById('tripDates').textContent = `${trip.dateFrom} до ${trip.dateTo}`;
+    }
+
+    // ⭐ Превю на снимки
+    document.getElementById('photo').addEventListener('change', function () {
+      const preview = document.getElementById('imagePreview');
+      preview.innerHTML = '';
+      Array.from(this.files).forEach(file => {
+        const reader = new FileReader();
+        reader.onload = function () {
+          const img = document.createElement('img');
+          img.src = reader.result;
+          preview.appendChild(img);
+        };
+        reader.readAsDataURL(file);
+      });
+    });
+
+    function saveArchivedTrip() {
+      const comment = document.getElementById('comment').value;
+      const rating = document.querySelector('input[name="rating"]:checked')?.value || '0';
+      const photos = document.getElementById('photo').files;
+
+      const photoArray = [];
+      const readers = [];
+
+      for (let i = 0; i < photos.length; i++) {
+        readers.push(new Promise((resolve) => {
+          const reader = new FileReader();
+          reader.onload = () => resolve(reader.result);
+          reader.readAsDataURL(photos[i]);
+        }));
+      }
+
+      Promise.all(readers).then((photoResults) => {
+        const archivedTrip = {
+          ...trip,
+          comment,
+          rating,
+          photos: photoResults,
+          archivedAt: new Date().toISOString()
+        };
+
+        let pastTrips = JSON.parse(localStorage.getItem('pastTrips')) || [];
+        pastTrips.push(archivedTrip);
+        trips.splice(tripIndex, 1);
+
+        localStorage.setItem('pastTrips', JSON.stringify(pastTrips));
+        localStorage.setItem('plannedTrips', JSON.stringify(trips));
+
+        window.location.href = '../violeta/past-trips1.html';
+      });
+    }
+  </script>
+</body>
+</html>

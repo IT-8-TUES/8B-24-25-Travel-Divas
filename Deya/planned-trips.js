@@ -45,18 +45,9 @@
     }
 
     function archiveTrip(index) {
-      const trips = JSON.parse(localStorage.getItem('plannedTrips')) || []; // Вземаме всички текущи пътувания
-      const archived = JSON.parse(localStorage.getItem('pastTrips')) || []; // Вземаме архивираните пътувания
-
-      archived.push(trips[index]); // Преместваме избраното пътуване в архива
-      trips.splice(index, 1); // Премахваме го от планираните
-
-      // Запазваме новите масиви обратно в localStorage
-      localStorage.setItem('plannedTrips', JSON.stringify(trips));
-      localStorage.setItem('pastTrips', JSON.stringify(archived));
-
-      loadTrips(); // Обновяваме списъка на екрана
-    }
+        localStorage.setItem('archivingTripIndex', index);
+        window.location.href = 'archive-trip.html';
+      }
 
     loadTrips(); // Стартираме зареждането на пътуванията при отваряне на страницата
     function goToDetails(index) {
