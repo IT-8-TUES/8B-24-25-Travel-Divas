@@ -55,4 +55,4 @@
         localStorage.setItem('selectedTrip', JSON.stringify(trips[index]));
         window.location.href = '../Airis/trip_details.html';
       }
-      
+      loadTrips(); // Стартираме зареждането на пътуванията при отваряне на страницата

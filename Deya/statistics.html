@@ -1,21 +1,130 @@
-<!DOCTYPE html> 
-<html lang="bg"> 
-
+<!DOCTYPE html>
+<html lang="bg">
 <head>
-  <meta charset="UTF-8"> 
+  <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Статистика – My Travel World</title> 
+  <title>Статистика – My Travel World</title>
+  <script src="https://unpkg.com/world-atlas@2/countries-110m.json"></script>
+  <script src="https://unpkg.com/topojson-client@3"></script>
+  <script src="https://d3js.org/d3.v7.min.js"></script>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(135deg, #e0f7fa, #e8f5e9);
+      color: #1b5e20;
+      margin: 0;
+      padding: 0;
+    }
 
-  <!-- Връзка към външната CSS библиотека за картата (Leaflet) -->
-  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
-  <link rel="stylesheet" href="statistics.css" />
+    nav {
+      background: linear-gradient(to right, #2196f3, #43a047);
+      padding: 0.8rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      flex-wrap: wrap;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .logo img {
+      height: 50px;
+      width: auto;
+    }
+
+    .logo span {
+      color: white;
+      font-weight: bold;
+      font-size: 1.2rem;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .nav-links a {
+      color: white;
+      text-decoration: none;
+      font-weight: 500;
+      transition: opacity 0.3s;
+    }
+
+    .nav-links a:hover {
+      opacity: 0.8;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 2rem auto;
+      padding: 2rem;
+      background: white;
+      border-radius: 16px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    }
+
+    h1 {
+      text-align: center;
+      margin-bottom: 2rem;
+      color: #0d47a1;
+    }
+
+    #map {
+      width: 100%;
+      height: 500px;
+    }
+
+    .stats-box {
+      margin-top: 2rem;
+      display: flex;
+      justify-content: space-around;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .stat {
+      flex: 1 1 200px;
+      background: #f1f8e9;
+      padding: 1.5rem;
+      border-radius: 12px;
+      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.07);
+      text-align: center;
+    }
+
+    .stat h2 {
+      font-size: 2rem;
+      margin: 0.5rem 0;
+      color: #2e7d32;
+    }
+
+    .stat p {
+      font-weight: bold;
+      color: #1b5e20;
+    }
+
+    footer {
+      text-align: center;
+      color: #fff;
+      background: linear-gradient(to right, #2196f3, #43a047);
+      padding: 18px 0 10px 0;
+      margin-top: 40px;
+      font-size: 1em;
+      box-shadow: 0 -2px 8px rgba(0,0,0,0.08);
+    }
+  </style>
 </head>
-
 <body>
   <nav>
     <div class="logo">
-      <img src="logo.png"> <!-- Изображение на логото -->
-      <span>My Travel World</span> <!-- Текст до логото -->
+      <img src="logo.png" alt="Лого">
+      <span>My Travel World</span>
     </div>
     <div class="nav-links">
       <a href="../Anastasia/index.html">Начало</a>
@@ -29,32 +138,30 @@
   </nav>
 
   <div class="container">
-    <h1>Статистика от пътуванията</h1> <!-- Заглавие -->
-    <div id="map"></div> <!-- Карта -->
-    <div class="stats"> <!-- Кутии със статистика -->
-      <div class="stat-box">
-        <h3 id="countriesCount">0</h3>
+    <h1>Статистика на пътуванията</h1>
+    <p>Щракни върху държава, за да я маркираш като посетена.</p>
+    <div id="map"></div>
+
+    <div class="stats-box">
+      <div class="stat">
         <p>Посетени държави</p>
+        <h2 id="visitedCount">0</h2>
       </div>
-      <div class="stat-box">
-        <h3 id="worldPercent">0%</h3>
-        <p>от света</p>
+      <div class="stat">
+        <p>Процент посетени държави</p>
+        <h2 id="visitedPercent">0%</h2>
       </div>
-      <div class="stat-box">
-        <h3 id="tripCount">0</h3>
-        <p>Общо пътувания</p>
-      </div>
-      <div class="stat-box">
-        <h3 id="totalBudget">0 лв.</h3>
-        <p>Изразходван бюджет</p>
+      <div class="stat">
+        <p>Брой пътувания</p>
+        <h2 id="tripCount">0</h2>
       </div>
     </div>
   </div>
+
   <footer>
-    <p>&copy; 2025 My Travel World </p>
+    <p>&copy; 2025 My Travel World</p>
   </footer>
-  <!-- Зареждане на Leaflet JS библиотеката -->
-  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
-  <script src="statistics.js"></script>
+
+  
 </body>
 </html>

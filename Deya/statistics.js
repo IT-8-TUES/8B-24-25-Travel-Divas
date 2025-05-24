@@ -1,71 +1,47 @@
 
-  let visitedCountries = new Set(JSON.parse(localStorage.getItem('visitedCountries')) || []); // Зареждаме посетените държави от localStorage или създаваме празен Set
-  const pastTrips = JSON.parse(localStorage.getItem('pastTrips')) || []; // Зареждаме минали пътувания или празен масив
-  const countryLayers = {}; // Ще пазим тук слоевете на държавите за по-късно обновяване
+    const TOTAL_COUNTRIES = 195;
+    const visitedCountries = new Set(JSON.parse(localStorage.getItem("visitedCountries")) || []);
 
-  const map = L.map('map').setView([20, 0], 2); // Създаваме карта центрирана на координати [20, 0] със zoom 2
-  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-    maxZoom: 5,
-    attribution: '© OpenStreetMap'
-  }).addTo(map); // Добавяме плочки от OpenStreetMap към картата
+    const width = 1000;
+    const height = 500;
+    const svg = d3.select("#map").append("svg")
+      .attr("width", width)
+      .attr("height", height);
 
-  function getCountryStyle(iso) {
-    const visited = visitedCountries.has(iso); // Проверяваме дали ISO кода е в множеството
-    return {
-      color: '#1b5e20',
-      weight: 1,
-      fillColor: visited ? '#66bb6a' : '#e0e0e0', // Зелен ако е посетена, сив ако не
-      fillOpacity: visited ? 0.7 : 0.1 // По-наситен цвят ако е посетена
-    };
-  }
+    const projection = d3.geoNaturalEarth1().scale(170).translate([width / 2, height / 2]);
+    const path = d3.geoPath().projection(projection);
 
-  function toggleCountry(iso) {
-    if (visitedCountries.has(iso)) {
-      visitedCountries.delete(iso); // Премахваме ако вече е била добавена
-    } else {
-      visitedCountries.add(iso); // Добавяме ако не е била
+    function updateStats() {
+      const visitedCount = visitedCountries.size;
+      const percent = ((visitedCount / TOTAL_COUNTRIES) * 100).toFixed(1);
+
+      const pastTrips = JSON.parse(localStorage.getItem("pastTrips")) || [];
+
+      document.getElementById('visitedCount').textContent = visitedCount;
+      document.getElementById('visitedPercent').textContent = `${percent}%`;
+      document.getElementById('tripCount').textContent = pastTrips.length;
     }
-    localStorage.setItem('visitedCountries', JSON.stringify(Array.from(visitedCountries))); // Запазваме в localStorage
-    updateLayerStyle(iso); // Обновяваме стила на конкретната държава
-    updateStats(); // Обновяваме статистиката
-  }
 
-  function updateLayerStyle(iso) {
-    if (countryLayers[iso]) {
-      countryLayers[iso].setStyle(getCountryStyle(iso)); // Задаваме нов стил според статуса на държавата
-    }
-  }
+    d3.json("https://unpkg.com/world-atlas@2/countries-110m.json").then(data => {
+      const countries = topojson.feature(data, data.objects.countries).features;
 
-  function updateAllStyles() {
-    for (const iso in countryLayers) {
-      updateLayerStyle(iso); // Обновяваме всички стилове
-    }
-  }
+      svg.selectAll("path")
+        .data(countries)
+        .join("path")
+        .attr("d", path)
+        .attr("fill", d => visitedCountries.has(d.id) ? "#4caf50" : "#cfd8dc")
+        .attr("stroke", "#607d8b")
+        .on("click", function (event, d) {
+          if (visitedCountries.has(d.id)) {
+            visitedCountries.delete(d.id);
+          } else {
+            visitedCountries.add(d.id);
+          }
+          localStorage.setItem("visitedCountries", JSON.stringify([...visitedCountries]));
+          d3.select(this).attr("fill", visitedCountries.has(d.id) ? "#4caf50" : "#cfd8dc");
+          updateStats();
+        });
 
-  function updateStats() {
-    const count = visitedCountries.size; // Общ брой посетени държави
-    document.getElementById('countriesCount').textContent = count; // Показваме броя
-    document.getElementById('worldPercent').textContent = ((count / 195) * 100).toFixed(1) + '%'; // Изчисляваме процента от света
-    const totalBudget = pastTrips.reduce((sum, t) => sum + (parseFloat(t.budget) || 0), 0); // Сумираме всички бюджети
-    document.getElementById('tripCount').textContent = pastTrips.length; // Общ брой пътувания
-    document.getElementById('totalBudget').textContent = totalBudget.toFixed(2) + ' лв.'; // Общо похарчени средства
-  }
-
-  fetch('https://raw.githubusercontent.com/datasets/geo-countries/master/data/countries.geojson') // Зареждаме GeoJSON с границите на държавите
-    .then(res => res.json()) // Преобразуваме отговора в JSON
-    .then(data => {
-      L.geoJSON(data, {
-        style: feature => getCountryStyle(feature.properties.ISO_A3), // Стил на всяка държава
-        onEachFeature: (feature, layer) => {
-          const iso = feature.properties.ISO_A3; // Вземаме ISO кода на държавата
-          countryLayers[iso] = layer; // Запазваме слоя по ISO код
-          layer.on('click', () => toggleCountry(iso)); // Когато се кликне, превключваме статус
-          layer.bindTooltip(feature.properties.ADMIN); // Tooltip с името на държавата
-        }
-      }).addTo(map); // Добавяме към картата
-
-      setTimeout(() => {
-        updateAllStyles(); // Обновяваме всички стилове
-        updateStats(); // Обновяваме статистиката
-      }, 100); // Изчакваме 100 милисекунди
+      updateStats();
     });
+ 

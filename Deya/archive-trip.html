@@ -67,7 +67,7 @@
       <a href="../Anastasia/index.html">Начало</a>
       <a href="../Airis/plan_trip.html">Планирай</a>
       <a href="planned-trips.html">Планирани</a>
-      <a href="../violeta/past-trips1.html">Дневник</a>
+      <a href="dnevnik.html">Дневник</a>
       <a href="../violeta/gallery.html">Галерия</a>
       <a href="../Anastasia/">Багаж</a>
       <a href="statistics.html">Статистика</a>
@@ -115,65 +115,49 @@
   </footer>
 
   <script>
-    const tripIndex = localStorage.getItem('archivingTripIndex');
-    const trips = JSON.parse(localStorage.getItem('plannedTrips')) || [];
-    const trip = trips[tripIndex];
-
-    if (trip) {
-      document.getElementById('tripDestination').textContent = trip.destination;
-      document.getElementById('tripDates').textContent = `${trip.dateFrom} до ${trip.dateTo}`;
-    }
-
-    // ⭐ Превю на снимки
-    document.getElementById('photo').addEventListener('change', function () {
-      const preview = document.getElementById('imagePreview');
-      preview.innerHTML = '';
-      Array.from(this.files).forEach(file => {
-        const reader = new FileReader();
-        reader.onload = function () {
-          const img = document.createElement('img');
-          img.src = reader.result;
-          preview.appendChild(img);
-        };
-        reader.readAsDataURL(file);
-      });
-    });
-
     function saveArchivedTrip() {
-      const comment = document.getElementById('comment').value;
-      const rating = document.querySelector('input[name="rating"]:checked')?.value || '0';
-      const photos = document.getElementById('photo').files;
+  if (!trip) {
+    alert("Грешка: Няма избрано пътуване за архивиране.");
+    return;
+  }
 
-      const photoArray = [];
-      const readers = [];
+  const comment = document.getElementById('comment').value;
+  const rating = document.querySelector('input[name="rating"]:checked')?.value || '0';
+  const photos = document.getElementById('photo').files;
 
-      for (let i = 0; i < photos.length; i++) {
-        readers.push(new Promise((resolve) => {
-          const reader = new FileReader();
-          reader.onload = () => resolve(reader.result);
-          reader.readAsDataURL(photos[i]);
-        }));
-      }
+  const readers = [];
 
-      Promise.all(readers).then((photoResults) => {
-        const archivedTrip = {
-          ...trip,
-          comment,
-          rating,
-          photos: photoResults,
-          archivedAt: new Date().toISOString()
-        };
+  for (let i = 0; i < photos.length; i++) {
+    readers.push(new Promise((resolve) => {
+      const reader = new FileReader();
+      reader.onload = () => resolve(reader.result);
+      reader.readAsDataURL(photos[i]);
+    }));
+  }
 
-        let pastTrips = JSON.parse(localStorage.getItem('pastTrips')) || [];
-        pastTrips.push(archivedTrip);
-        trips.splice(tripIndex, 1);
+  Promise.all(readers).then((photoResults) => {
+    const archivedTrip = {
+      ...trip,
+      comment,
+      rating,
+      photos: photoResults,
+      archivedAt: new Date().toISOString()
+    };
 
-        localStorage.setItem('pastTrips', JSON.stringify(pastTrips));
-        localStorage.setItem('plannedTrips', JSON.stringify(trips));
+    let pastTrips = JSON.parse(localStorage.getItem('pastTrips')) || [];
+    pastTrips.push(archivedTrip);
+    trips.splice(tripIndex, 1);
 
-        window.location.href = '../violeta/past-trips1.html';
-      });
-    }
+    localStorage.setItem('pastTrips', JSON.stringify(pastTrips));
+    localStorage.setItem('plannedTrips', JSON.stringify(trips));
+
+    window.location.href = '../violeta/past-trips.html';
+  }).catch((err) => {
+    console.error("Грешка при четене на снимки:", err);
+    alert("Възникна проблем при запазването на пътуването.");
+  });
+}
+
   </script>
 </body>
 </html>
