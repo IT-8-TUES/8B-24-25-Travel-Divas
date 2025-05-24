@@ -31,7 +31,6 @@ header {
   height: 50px;
   width: auto;
   border-radius: 6px;
-  font-size: 1.2rem;
 }
 
 .nav-title {
@@ -61,21 +60,6 @@ header {
   opacity: 0.8;
 }
 
-@media (max-width: 900px) {
-  .main-nav {
-    flex-direction: column;
-    align-items: flex-start;
-    height: auto;
-    padding: 1rem;
-  }
-  .nav-left {
-    margin-bottom: 10px;
-  }
-  .nav-links {
-    flex-direction: column;
-    width: 100%;
-  }
-}
 
 .presentation h2 {
   font-family: 'Pacifico', cursive;
@@ -273,33 +257,6 @@ main.hero .next-trip h3 {
   min-width: unset;
   max-width: unset;
   box-sizing: border-box;
-}
-
-@media (max-width: 900px) {
-  .main-nav {
-    flex-direction: column;
-    align-items: flex-start;
-    height: auto;
-    padding: 1rem;
-  }
-  .nav-left {
-    margin-bottom: 10px;
-  }
-  .nav-links {
-    flex-direction: column;
-    gap: 8px;
-    width: 100%;
-  }
-  .trips-container {
-    flex-direction: column;
-    align-items: center;
-    gap: 24px;
-  }
-  .trip-card {
-    width: 90%;
-    min-width: unset;
-    max-width: 98vw;
-  }
 }
 
 footer {
