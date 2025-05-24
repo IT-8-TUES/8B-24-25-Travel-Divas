@@ -1,4 +1,4 @@
-document.addEventListener("DOMContentLoaded", function () {
+ document.addEventListener("DOMContentLoaded", function () {
   const countryFilter = document.getElementById("filter-country");
   const yearFilter = document.getElementById("filter-year");
   const trips = document.querySelectorAll(".past-trip-entry");

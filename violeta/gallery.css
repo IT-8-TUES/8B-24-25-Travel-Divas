@@ -131,7 +131,7 @@ footer {
     align-items: center;
   }
 
-  .snimka {
+  .gallery-item img {
     width: 90%;
     height: auto;
   }
