@@ -28,9 +28,10 @@ header {
 }
 
 .nav-logo {
-  height: 40px;
+  height: 50px;
   width: auto;
   border-radius: 6px;
+  font-size: 1.2rem;
 }
 
 .nav-title {
@@ -193,7 +194,8 @@ main.hero .next-trip h3 {
 
 .trips-container {
   display: flex;
-  justify-content: flex-start;
+  flex-direction: column;   
+  align-items: center;    
   gap: 32px;
   margin: 40px 0 0 0;
   padding-left: 24px;
@@ -213,14 +215,9 @@ main.hero .next-trip h3 {
   font-family: 'Montserrat', Arial, sans-serif;
   font-size: 1.18em;
   margin-bottom: 1.5rem;
-  transition: transform 0.2s;
   min-height: 220px;
 }
 
-.trip-card:hover {
-  transform: scale(1.01);
-  box-shadow: 0 10px 30px rgba(33, 150, 243, 0.13);
-}
 
 .trip-card h2 {
   margin: 0 0 10px 0;
@@ -269,6 +266,13 @@ main.hero .next-trip h3 {
 .trip-card .btn:hover {
   background: #43a047;
   color: #fff;
+}
+
+.trip-card.full-width {
+  width: 100%;
+  min-width: unset;
+  max-width: unset;
+  box-sizing: border-box;
 }
 
 @media (max-width: 900px) {
