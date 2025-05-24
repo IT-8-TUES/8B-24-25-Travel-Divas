@@ -105,11 +105,6 @@ main.hero {
   transition: transform 0.3s ease;
 }
 
-main.hero:hover {
-  transform: scale(1.03);
-}
-
-
 .buttons {
   margin-bottom: 28px;
   padding-left: 24px;
