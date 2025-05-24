@@ -50,3 +50,6 @@ main.hero p {
   display: block;
   margin: 18px auto 0 auto;
 }
+.btn, .btn.secondary {
+  border: none;
+}

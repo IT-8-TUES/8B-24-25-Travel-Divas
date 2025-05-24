@@ -109,57 +109,29 @@ main.hero:hover {
   transform: scale(1.03);
 }
 
-main.hero .intro,
-main.hero .next-trip {
-  background: #507772;
-  border-radius: 10px;
-  padding: 22px 18px;
-  margin-bottom: 18px;
-}
-
-main.hero .intro h2,
-main.hero .intro p,
-main.hero .next-trip,
-main.hero .next-trip h3 {
-  color: #f6f6e7;
-}
-
-.intro h2 {
-  color: #0a0a0a;
-  margin-top: 0;
-  margin-bottom: 10px;
-  font-size: 1.5em;
-}
-
-.intro p {
-  color: #f6f6e7;
-  margin-bottom: 24px;
-}
 
 .buttons {
   margin-bottom: 28px;
   padding-left: 24px;
 }
 
-.btn, .btn.secondary, .btn.gallery {
+.btn, .btn.secondary {
   display: inline-block;
   padding: 10px 22px;
   margin-right: 10px;
-  border-radius: 6px;
-  border: 1px solid #f5f6f2;
+  border-radius: 14px;
   font-size: 1em;
   font-weight: bold;
   text-decoration: none;
   cursor: pointer;
-  transition: background 0.2s, color 0.2s;
+  transition: background 0.2s, color 0.2s, transform 0.18s;
   background: linear-gradient(to right, #2196f3, #43a047);
   color: #f6f6e7;
 }
 
-.btn:hover, .btn.secondary:hover, .btn.gallery:hover {
-  background: #f6f6e7;;
-  color: #3a5757;
-  border: 1px solid #507772;
+.btn:hover, .btn.secondary:hover {
+  transform: scale(1.02);
+  background: linear-gradient(to right, #1976d2, #388e3c); 
 }
 
 .next-trip {
